@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .toggle-btn {
+    @apply relative cursor-pointer border-0 bg-transparent px-[30px] py-[10px] outline-none;
+  }
+
+  .input-field {
+    @apply block w-full border-b-[1px] border-black bg-transparent p-[10px] outline-none;
+  }
+
+  .submit-btn {
+    @apply m-auto block w-5/6 rounded-[30px]  border-none bg-green-600 py-[10px] px-[30px] font-bold text-white outline-none;
+  }
+
+  .slider {
+    @apply flex h-[400px] flex-col items-center justify-center text-3xl font-bold text-white;
+  }
+}
