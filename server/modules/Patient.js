@@ -1,50 +1,42 @@
-import moongoose from "moongoose";
+import mongoose, { Schema } from "mongoose";
 
-const PatientSchema = new moongoose.Schema(
-  {
-    firstName: {
-      type: String,
-      required: true,
-      min: 2,
-      max: 50,
-    },
-    lastName: {
-      type: String,
-      required: true,
-      min: 2,
-      max: 50,
-    },
-    email: {
-      type: String,
-      required: true,
-      max: 50,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      max: 5,
-    },
-    picturePath: {
-      type: String,
-      default: "",
-    },
-    address: {
-      type: String,
-    },
-    phoneNumber: {
-      type: String,
-      required: true,
-      min: 10,
-      max: 10,
-    },
-    gender: {
-      type: Boolean,
-      required: true,
-    },
+const PatientSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    default: "",
   },
-  { timestamps: true }
-);
+  lastName: {
+    type: String,
+    default: "",
+  },
+  address: {
+    type: String,
+    default: "",
+  },
+  age: {
+    type: String,
+    default: "",
+  },
+  gender: {
+    type: Boolean,
+  },
+  userEmail: {
+    type: String,
+    default: "",
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+  myDoctors: {
+    type: Array,
+    default: [],
+  },
+  phoneNumber: {
+    type: String,
+    default: "",
+  },
+});
 
-const Patient = moongoose.model("Patient", PatientSchema);
+const Patient = mongoose.model("Patients", PatientSchema);
 export default Patient;

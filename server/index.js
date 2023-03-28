@@ -1,54 +1,44 @@
-import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "moongoose";
 import cors from "cors";
+import "express-async-errors";
+import express from "express";
 import dotenv from "dotenv";
-import multer from "multer";
-import helmet from "helmet";
 import morgan from "morgan";
-import path from "path";
-import { fileURLToPath } from "url";
-import authRoutes from "./routes/auth.js";
-import patientRoutes from "./routes/patient.js";
-import { register } from "./controllers/auth.js";
-
-// CONFIGURATIONS
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import connectDB from "./db/connect.js";
 dotenv.config();
+
+import authRouter from "./routes/authRoute.js";
+import doctorRouter from "./routes/patientRoute.js";
+
+// middleware
+import errorHandlerMiddleware from "./middleware/errorHandler.js";
+import notFoundMiddleware from "./middleware/notFound.js";
+import authenticateUser from "./middleware/auth.js";
+
 const app = express();
-app.use(express.json());
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("common"));
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use(express.json());
 
-// FILE STORAGE
-const storage = multer.diskStorage({
-  destination(req, res, cb) {
-    cb(null, "public/assets");
-  },
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 
-  filename(req, res, cb) {
-    cb(null, file.originalname);
-  },
-});
+app.get("/", (req, res) => res.send({ msg: "hello from backend" }));
 
-const upload = multer({ storage });
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/doctors", authenticateUser, doctorRouter);
 
-// ROUTES
-app.post("/auth/register", upload.single("picture"), register);
-app.use("/auth", authRoutes);
-app.use("/patient", patientRoutes);
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
-// MONGOOSE
-const PORT = process.env.PORT || 3000;
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server running at ${PORT}`));
-  })
-  .catch((err) => console.log(err));
+const port = process.env.PORT || 3000;
+
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URL);
+    app.listen(port, () => console.log("Server running at", port));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
