@@ -1,14 +1,13 @@
+import Patient from "../modules/Patient.js";
+import User from "../modules/User.js";
+import Doctor from "../modules/Doctor.js";
+import { StatusCodes } from "http-status-codes";
+
 export const getPatient = async (req, res) => {
-  res.send("get patient");
+  res.send("get user");
 };
 
 export const getAllPatients = async (req, res) => {
-  // try {
-  //   const doctor = await Doctor.find();
-  //   res.status(200).json(doctor);
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
   res.send("get all patients");
 };
 
@@ -20,6 +19,34 @@ export const deletePatient = async (req, res) => {
   res.send("deleting patient");
 };
 
-export const updateDoctor = async (req, res) => {
-  res.send("Updating doctor");
+export const addPatient = async (req, res) => {
+  try {
+    const { name, age, email, gender, detail, emailDoctor } = req.body;
+    const password = "111111";
+    const role = "Patient";
+    let patient = await User.create({ name, email, password, role });
+
+    patient = await Patient.create({
+      name,
+      age,
+      email,
+      gender,
+      detail,
+      userId: patient._id,
+    });
+
+    let doctor = await User.findOne({ email: emailDoctor });
+    doctor = await Doctor.findOne({ userId: doctor._id });
+    const myPatients = doctor.myPatients;
+
+    myPatients.push(email);
+    doctor.myPatients = myPatients;
+
+    doctor.save();
+
+    console.log(doctor);
+    res.status(StatusCodes.CREATED).json({ email, password });
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json(error);
+  }
 };

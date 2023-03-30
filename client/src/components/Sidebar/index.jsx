@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`-ml-[300px] h-full min-h-screen w-[300px] bg-white transition-all duration-300 ease-in-out ${
+      className={`sticky top-0 -ml-[300px] h-full min-h-screen w-[250px] min-w-[300px] bg-white transition-all duration-300 ease-in-out ${
         showSidebar ? "lg:-ml-[300px]" : "lg:ml-0"
       } `}
     >

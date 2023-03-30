@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import {
   AddPatient,
   PatientList,
-  Message,
+  Stat,
   Profile,
   SharedLayout,
   ProtectedRoute,
@@ -21,7 +21,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Message />} />
+          <Route index element={<Stat />} />
           <Route path="profile" element={<Profile />} />
           <Route path="add-patient" element={<AddPatient />} />
           <Route path="all-patients" element={<PatientList />} />

@@ -10,10 +10,17 @@ import {
   LOGIN_USER_SUCCESS,
   TOGGLE_SIDEBAR,
   LOGOUT_USER,
+  ADD_NEW_PATIENT_BEGIN,
+  ADD_NEW_PATIENT_SUCCESS,
+  ADD_NEW_PATIENT_ERROR,
+  DELETE_MY_PATIENT,
 } from "./actions";
 import axios from "axios";
 
 import reducer from "./reducer";
+import data from "../fakeData/MOCK_DATA.json";
+import newData from "../../../server/MOCK_DATA.json";
+console.log(newData);
 
 const token = localStorage.getItem("token");
 let user = localStorage.getItem("user");
@@ -27,10 +34,20 @@ const initialSate = {
   alertText: "",
   alertType: "",
   infoUser: {},
+  patientAccount: {},
   username: user?.username ?? null,
   email: user?.email ?? null,
   role: user?.role ?? null,
   token: token || null,
+  waiting: [],
+  totalWaiting: 0,
+  numberOfWaitingPages: 1,
+  waitingPage: 1,
+  myPatients: [],
+  totalPatients: 0,
+  numberOfPatientPages: 1,
+  patientPage: 1,
+  data: data ?? [],
 };
 
 const AppContext = React.createContext();
@@ -123,11 +140,40 @@ const AppProvider = ({ children }) => {
     try {
       const { data } = await authFetch.patch("/auth/updateUser", info);
       dispatch({ type: UPDATE_USER_SUCCESS, payload: data });
+    } catch (err) {
+      dispatch({
+        type: REGISTER_USER_ERROR,
+        payload: { msg: err.response.data.msg },
+      });
+      console.log(err);
+    }
+    clearAlert();
+  };
+
+  const addPatient = async (info) => {
+    const newInfo = { ...info, emailDoctor: state.email };
+    dispatch({ type: ADD_NEW_PATIENT_BEGIN });
+    try {
+      const { data } = await authFetch.post("/doctors", newInfo);
+      console.log(data);
+      dispatch({ type: ADD_NEW_PATIENT_SUCCESS, payload: data });
     } catch (error) {
-      dispatch({ type: REGISTER_USER_ERROR });
+      dispatch({
+        type: ADD_NEW_PATIENT_ERROR,
+        payload: { msg: "Email is already used!" },
+      });
       console.log(error);
     }
     clearAlert();
+  };
+
+  const getAllPatients = async () => {
+    console.log("done");
+  };
+
+  const deleteMyPatient = (firstName) => {
+    const newData = state.data.filter((el) => el.firstName !== firstName);
+    dispatch({ type: DELETE_MY_PATIENT, payload: newData });
   };
 
   return (
@@ -140,6 +186,8 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         logoutUser,
         updateUser,
+        deleteMyPatient,
+        addPatient,
       }}
     >
       {children}

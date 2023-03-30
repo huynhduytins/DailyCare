@@ -7,7 +7,7 @@ import connectDB from "./db/connect.js";
 dotenv.config();
 
 import authRouter from "./routes/authRoute.js";
-import doctorRouter from "./routes/patientRoute.js";
+import doctorRouter from "./routes/doctorRoute.js";
 
 // middleware
 import errorHandlerMiddleware from "./middleware/errorHandler.js";

@@ -9,6 +9,10 @@ import {
   LOGIN_USER_SUCCESS,
   TOGGLE_SIDEBAR,
   LOGOUT_USER,
+  ADD_NEW_PATIENT_BEGIN,
+  ADD_NEW_PATIENT_SUCCESS,
+  ADD_NEW_PATIENT_ERROR,
+  DELETE_MY_PATIENT,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -94,6 +98,32 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === ADD_NEW_PATIENT_BEGIN) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "success",
+      alertText: "PROCESSING...",
+    };
+  }
+
+  if (action.type === ADD_NEW_PATIENT_SUCCESS) {
+    return {
+      ...state,
+      alertType: "success",
+      alertText: "PATIENT WAS SUCCESSFULLY ADDED.",
+      patientAccount: action.payload,
+    };
+  }
+
+  if (action.type === ADD_NEW_PATIENT_ERROR) {
+    return {
+      ...state,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    };
+  }
+
   if (action.type === TOGGLE_SIDEBAR) {
     return { ...state, showSidebar: !state.showSidebar };
   }
@@ -105,6 +135,14 @@ const reducer = (state, action) => {
       username: null,
       email: null,
       role: null,
+    };
+  }
+
+  if (action.type === DELETE_MY_PATIENT) {
+    console.log(action.payload);
+    return {
+      ...state,
+      data: [...action.payload],
     };
   }
 };

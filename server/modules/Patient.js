@@ -18,15 +18,20 @@ const PatientSchema = new mongoose.Schema({
     default: "",
   },
   gender: {
-    type: Boolean,
-  },
-  userEmail: {
     type: String,
     default: "",
   },
+  detail: {
+    type: String,
+    default: "",
+  },
+  levelDis: {
+    type: String,
+    default: "Good",
+  },
   userId: {
     type: Schema.Types.ObjectId,
-    required: true,
+    // required: true,
   },
   myDoctors: {
     type: Array,

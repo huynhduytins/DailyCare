@@ -8,7 +8,7 @@ const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
 
   return (
-    <div className="flex h-28 w-full items-center justify-between bg-white px-20 pt-4">
+    <nav className="sticky top-0 flex h-28 w-full items-center justify-between border-b-[1px] bg-white px-20 pt-4 shadow-[0.6px_5px_5px_-6px_#333]">
       <button
         className="cursor-pointer border-transparent bg-transparent text-2xl text-green-500 "
         onClick={toggleSidebar}
@@ -37,7 +37,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 
