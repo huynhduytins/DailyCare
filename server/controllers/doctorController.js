@@ -85,6 +85,7 @@ export const deletePatient = async (req, res) => {
     arr = doctor.myPatients;
     arr = arr.filter((el) => el !== patient.email);
 
+    doctor.myPatients = arr;
     doctor.save();
     res.status(StatusCodes.OK).json({ mgs: "done" });
   } catch (error) {
@@ -202,13 +203,16 @@ export const addPatient = async (req, res) => {
     let patient = await User.create({ name, email, password, role });
 
     patient = await Patient.create({
-      name,
+      firstName: name,
       age,
       email,
       gender,
       detail,
       userId: patient._id,
     });
+
+    patient.myDoctors = [emailDoctor];
+    patient.save();
 
     let doctor = await User.findOne({ email: emailDoctor });
     doctor = await Doctor.findOne({ userId: doctor._id });
