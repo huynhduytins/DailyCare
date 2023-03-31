@@ -1,7 +1,3 @@
-import { MdOutlinePendingActions } from "react-icons/md";
-import { FaCalendarCheck } from "react-icons/fa";
-import { TbUrgent } from "react-icons/tb";
-
 const StatItem = ({ num, text, icon }) => {
   return (
     <article

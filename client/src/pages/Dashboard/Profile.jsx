@@ -1,14 +1,19 @@
 import InputForm from "../../components/InputForm";
-import Alert from "../../components/Alert";
 import { useAppContext } from "../../context/appContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./Form";
 
 const Profile = () => {
   const [submit, setSubmit] = useState(true);
 
-  const { updateUser, showAlert, displayAlert, infoUser } = useAppContext();
-  console.log(infoUser);
+  const {
+    updateUser,
+    showAlert,
+    displayAlert,
+    infoUser,
+    changeParams,
+    changePage,
+  } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +42,11 @@ const Profile = () => {
     updateUser(obj);
     setSubmit(true);
   };
+
+  useEffect(() => {
+    changePage(1);
+    changeParams({ search: "", levelDis: "all", gender: "all", sort: "a-z" });
+  }, []);
 
   return (
     <Form

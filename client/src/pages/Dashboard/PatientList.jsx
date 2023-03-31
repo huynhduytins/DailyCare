@@ -1,4 +1,5 @@
 import PatientContainer from "../../components/PatientContainer";
+import BtnPage from "../../components/PatientContainer/BtnPage";
 import SearchContainer from "../../components/SearchContainer";
 
 const PatientList = () => {
@@ -6,6 +7,7 @@ const PatientList = () => {
     <div>
       <SearchContainer />
       <PatientContainer />
+      <BtnPage />
     </div>
   );
 };

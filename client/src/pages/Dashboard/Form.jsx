@@ -2,7 +2,7 @@ import Alert from "../../components/Alert";
 
 const Form = ({ title, children, handleSubmit, button, showAlert, submit }) => {
   return (
-    <div className="mt-16 mb-10 flex  w-full justify-center lg:mb-0">
+    <div className="mt-16 mb-10 flex w-full justify-center">
       <form
         className="w-10/12 rounded bg-white py-10 px-6 shadow-lg"
         onSubmit={(e) => handleSubmit(e)}

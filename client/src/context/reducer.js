@@ -13,6 +13,13 @@ import {
   ADD_NEW_PATIENT_SUCCESS,
   ADD_NEW_PATIENT_ERROR,
   DELETE_MY_PATIENT,
+  GET_MY_PATIENTS_BEGIN,
+  GET_MY_PATIENTS_SUCCESS,
+  GET_WAITING_LIST,
+  GET_STATS,
+  DECLINE_MY_PATIENT,
+  CHANGE_PAGE,
+  CHANGE_PARAM,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -79,7 +86,7 @@ const reducer = (state, action) => {
       ...state,
       alertType: "success",
       alertText: "User was successfully updated.",
-      infoUser: action.payload.user,
+      infoUser: action.payload,
     };
   }
 
@@ -139,10 +146,62 @@ const reducer = (state, action) => {
   }
 
   if (action.type === DELETE_MY_PATIENT) {
-    console.log(action.payload);
     return {
       ...state,
-      data: [...action.payload],
+      myPatients: [...action.payload],
+    };
+  }
+
+  if (action.type === DECLINE_MY_PATIENT) {
+    console.log("yes");
+    return {
+      ...state,
+      waitingList: [...action.payload],
+    };
+  }
+
+  if (action.type === GET_MY_PATIENTS_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === GET_MY_PATIENTS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      myPatients: action.payload.myPatients,
+      totalPatients: action.payload.totalPatients,
+      numberOfPatientPages: action.payload.numberOfPatientPages,
+    };
+  }
+
+  if (action.type === GET_WAITING_LIST) {
+    return {
+      ...state,
+      waitingList: action.payload,
+    };
+  }
+
+  if (action.type === GET_STATS) {
+    return {
+      ...state,
+      stats: action.payload,
+    };
+  }
+
+  if (action.type === CHANGE_PAGE) {
+    return {
+      ...state,
+      page: action.payload.page,
+    };
+  }
+
+  if (action.type === CHANGE_PARAM) {
+    return {
+      ...state,
+      search: action.payload.params.search,
+      levelDis: action.payload.params.levelDis,
+      gender: action.payload.params.gender,
+      sort: action.payload.params.sort,
     };
   }
 };

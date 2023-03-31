@@ -7,17 +7,20 @@ import {
   ResponsiveContainer,
   Area,
 } from "recharts";
-
-const data = [
-  { date: "Oct 2022", patient: 1 },
-  { date: "Nov 2022", patient: 4 },
-  { date: "Dec 2022", patient: 3 },
-  { date: "Jan 2023", patient: 2 },
-  { date: "Feb 2023", patient: 2 },
-  { date: "Mar 2023", patient: 5 },
-];
+import { useAppContext } from "../../context/appContext";
 
 const BarChartComponent = () => {
+  const { stats } = useAppContext();
+
+  const data = [
+    { date: "Oct 2022", patient: stats?.data?.monthlyUrgent[0] ?? 0 },
+    { date: "Nov 2022", patient: stats?.data?.monthlyUrgent[1] ?? 0 },
+    { date: "Dec 2022", patient: stats?.data?.monthlyUrgent[2] ?? 0 },
+    { date: "Jan 2023", patient: stats?.data?.monthlyUrgent[3] ?? 0 },
+    { date: "Feb 2023", patient: stats?.data?.monthlyUrgent[4] ?? 0 },
+    { date: "Mar 2023", patient: stats?.data?.monthlyUrgent[5] ?? 0 },
+  ];
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={data} margin={{ top: 50 }}>

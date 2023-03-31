@@ -41,6 +41,9 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  waiting: {
+    type: Array,
+  },
 });
 
 const Patient = mongoose.model("Patients", PatientSchema);

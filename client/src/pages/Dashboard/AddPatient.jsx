@@ -3,13 +3,22 @@ import { useAppContext } from "../../context/appContext";
 import { useEffect, useState } from "react";
 import Form from "./Form";
 import AccountPatient from "../../components/AccountPatient";
+import WaitingComponent from "../../components/WaitingComponent";
 
 const AddPatient = () => {
   const [submit, setSubmit] = useState(true);
   const [openModal, setOpenModal] = useState(false);
 
-  const { showAlert, alertText, displayAlert, addPatient, patientAccount } =
-    useAppContext();
+  const {
+    showAlert,
+    alertText,
+    displayAlert,
+    addPatient,
+    patientAccount,
+    getWaitingList,
+    changeParams,
+    changePage,
+  } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +44,12 @@ const AddPatient = () => {
     }
   }, [alertText]);
 
+  useEffect(() => {
+    changePage(1);
+    changeParams({ search: "", levelDis: "all", gender: "all", sort: "a-z" });
+    getWaitingList();
+  }, []);
+
   return (
     <>
       <div className="mb-9">
@@ -45,7 +60,7 @@ const AddPatient = () => {
           showAlert={showAlert}
           submit={submit}
         >
-          <div className="mt-12 flex flex-col gap-12 lg:flex-row ">
+          <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
             <InputForm
               type="name"
               name="Name"
@@ -62,7 +77,7 @@ const AddPatient = () => {
             />
           </div>
           <hr className="mt-10" />
-          <div className="mt-16 flex flex-col gap-12 lg:flex-row ">
+          <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
             <InputForm
               type="age"
               name="Age"
@@ -79,8 +94,8 @@ const AddPatient = () => {
             />
           </div>
           <hr className="mt-10" />
-          <div className=" relative mt-16">
-            <label htmlFor="detail" className="absolute -top-8">
+          <div className=" mt-8">
+            <label htmlFor="detail" className="mb-5 block">
               Detail about the patient's health
             </label>
             <textarea
@@ -97,6 +112,7 @@ const AddPatient = () => {
           setOpenModal={setOpenModal}
         />
       )}
+      <WaitingComponent />
     </>
   );
 };

@@ -4,13 +4,25 @@ import {
   getAllPatients,
   connectPatient,
   deletePatient,
+  declinePatient,
   addPatient,
+  getWaitingList,
+  getStats,
+  acceptPatient,
 } from "../controllers/doctorController.js";
 
 const router = express.Router();
 
-router.route("/").get(getAllPatients).post(addPatient);
+router.route("/").post(addPatient).get(getAllPatients);
 
-router.route("/:id").get(getPatient).post(connectPatient).delete(deletePatient);
+router.route("/waiting-list").get(getWaitingList);
+
+router.route("/get-stats").get(getStats);
+
+router.route("/:id").get(getPatient).post(connectPatient);
+
+router.route("/delete/:id").delete(deletePatient);
+router.route("/decline/:id").delete(declinePatient);
+router.route("/accept/:id").delete(acceptPatient);
 
 export default router;

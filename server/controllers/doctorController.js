@@ -8,7 +8,55 @@ export const getPatient = async (req, res) => {
 };
 
 export const getAllPatients = async (req, res) => {
-  res.send("get all patients");
+  console.log(req.query);
+  const { levelDis, gender, search, sort } = req.query;
+  const { userId } = req.user;
+  const user = await User.findOne({ _id: userId });
+
+  const queryObject = {
+    myDoctors: user.email,
+  };
+
+  if (levelDis && levelDis !== "all") {
+    console.log(levelDis);
+    queryObject.levelDis = levelDis;
+  }
+
+  if (gender && gender !== "all") {
+    queryObject.gender = gender;
+  }
+
+  if (search) {
+    queryObject.firstName = { $regex: search, $options: "i" };
+  }
+
+  let result = Patient.find(queryObject);
+
+  if (sort === "a-z") {
+    result = result.sort("firstName");
+  }
+
+  if (sort === "z-a") {
+    result = result.sort("-firstName");
+  }
+
+  // Pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+
+  result = result.skip(skip).limit(limit);
+
+  const myPatients = await result;
+
+  const totalMyPatients = await Patient.find(queryObject);
+  const numberOfPatientPages = Math.ceil(totalMyPatients.length / limit);
+
+  res.status(StatusCodes.OK).json({
+    myPatients,
+    totalPatients: myPatients.length,
+    numberOfPatientPages,
+  });
 };
 
 export const connectPatient = async (req, res) => {
@@ -16,7 +64,134 @@ export const connectPatient = async (req, res) => {
 };
 
 export const deletePatient = async (req, res) => {
-  res.send("deleting patient");
+  try {
+    const { id } = req.params;
+    const { userId } = req.user;
+
+    let doctor = await User.findOne({ _id: userId });
+    let patient = await Patient.findOne({ _id: id });
+
+    let arr = patient.myDoctors;
+    arr = arr.filter((el) => el !== doctor.email);
+    patient.myDoctors = arr;
+
+    patient.save();
+
+    doctor = await Doctor.findOne({ userId });
+    patient = await User.findOne({ _id: patient.userId });
+
+    if (!patient) return res.send("done");
+
+    arr = doctor.myPatients;
+    arr = arr.filter((el) => el !== patient.email);
+
+    doctor.save();
+    res.status(StatusCodes.OK).json({ mgs: "done" });
+  } catch (error) {
+    console.log(error.response);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ mgs: "fail" });
+  }
+};
+
+export const acceptPatient = async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.user;
+
+  let doctor = await User.findOne({ _id: userId });
+  let patient = await Patient.findOne({ _id: id });
+
+  let arr = patient.waiting;
+  arr = arr.filter((el) => el !== doctor.email);
+  patient.waiting = arr;
+
+  patient.save();
+
+  doctor = await User.findOne({ _id: userId });
+  patient = await Patient.findOne({ _id: id });
+
+  arr = patient.myDoctors;
+  arr.push(doctor.email);
+  patient.myDoctors = arr;
+  patient.save();
+
+  doctor = await Doctor.findOne({ userId });
+  patient = await User.findOne({ _id: patient.userId });
+
+  if (!patient) return res.send("done");
+
+  doctor.save();
+  res.status(StatusCodes.OK).json({ mgs: "done" });
+};
+
+export const declinePatient = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId } = req.user;
+
+    const doctor = await User.findOne({ _id: userId });
+    const patient = await Patient.findOne({ _id: id });
+
+    let arr = patient.waiting;
+    arr = arr.filter((el) => el !== doctor.email);
+    patient.waiting = arr;
+
+    patient.save();
+    res.status(StatusCodes.OK).json({ mgs: "done" });
+  } catch (error) {
+    console.log(error.response);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ mgs: "fail" });
+  }
+};
+
+export const getStats = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const user = await User.findOne({ _id: userId });
+
+    const waitingPatients = await Patient.find({ waiting: user.email });
+    const urgentPatients = await Patient.find({ myDoctors: user.email });
+
+    const data = {
+      urgentPatient: 0,
+      schedule: urgentPatients.length ? 5 : 0,
+      pending: waitingPatients.length,
+      "0-22": 0,
+      "23-35": 0,
+      "36-60": 0,
+      ">60": 0,
+      monthlyUrgent: [6, 4, 5, 3, 6, 7],
+    };
+
+    urgentPatients.forEach((patient) => {
+      if (patient.levelDis === "Urgent") {
+        data.urgentPatient += 1;
+      }
+      if (patient.age > 0 && patient.age <= 22) {
+        data["0-22"] += 1;
+      } else if (patient.age <= 35) {
+        data["23-35"] += 1;
+      } else if (patient.age <= 60) {
+        data["36-60"] += 1;
+      } else {
+        data[">60"] += 1;
+      }
+    });
+
+    res.json({ data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getWaitingList = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const user = await User.findOne({ _id: userId });
+    const myPatients = await Patient.find({ waiting: user.email });
+    res.json({ myPatients });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const addPatient = async (req, res) => {

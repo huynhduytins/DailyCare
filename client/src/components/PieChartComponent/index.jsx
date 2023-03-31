@@ -1,11 +1,5 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
-
-const data = [
-  { name: "age: 0-22", value: 400 },
-  { name: "age: 23-35", value: 300 },
-  { name: "age: 36-60", value: 300 },
-  { name: "age: >60", value: 200 },
-];
+import { useAppContext } from "../../context/appContext";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -36,6 +30,15 @@ const renderCustomizedLabel = ({
 };
 
 const PieChartComponent = () => {
+  const { stats } = useAppContext();
+
+  const data = [
+    { name: "age(0-22)", value: stats.data ? stats.data["0-22"] : 0 },
+    { name: "age(23-35)", value: stats.data ? stats.data["23-35"] : 0 },
+    { name: "age(36-60)", value: stats.data ? stats.data["36-60"] : 0 },
+    { name: "age(>60)", value: stats.data ? stats.data[">60"] : 0 },
+  ];
+
   return (
     <div className="flex h-[300px] w-full items-center justify-center gap-8">
       <ResponsiveContainer width={160} height={160}>

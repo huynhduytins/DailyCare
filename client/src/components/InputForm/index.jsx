@@ -3,8 +3,8 @@ import { useState } from "react";
 const InputForm = ({ type, name, value, submit, setSubmit }) => {
   const [inputVal, setInputVal] = useState(value);
   return (
-    <div className="relative w-full">
-      <label htmlFor={type} className="absolute -top-8">
+    <div className="w-full">
+      <label htmlFor={type} className="mb-5 block">
         {name}
       </label>
       <input

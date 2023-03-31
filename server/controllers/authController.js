@@ -75,38 +75,27 @@ export const login = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const { firstName, lastName, specialist, address, degree, age, phone } =
-    req.body;
-  if (
-    !firstName ||
-    !lastName ||
-    !specialist ||
-    !address ||
-    !degree ||
-    !age ||
-    !phone
-  ) {
-    throw new Error("Please provide all values");
+  try {
+    if (req.user.role === "Doctor") {
+      const updatedUser = await Doctor.findOneAndUpdate(
+        {
+          userId: req.user.userId,
+        },
+        req.body,
+        { new: true, runValidators: true }
+      );
+      res.status(StatusCodes.OK).json(updatedUser);
+    } else {
+      const updatedUser = await Patient.findOneAndUpdate(
+        {
+          userId: req.user.userId,
+        },
+        req.body,
+        { new: true, runValidators: true }
+      );
+      res.status(StatusCodes.OK).json(updatedUser);
+    }
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json({ error });
   }
-
-  let user;
-
-  if (req.user.role === "Doctor") {
-    user = await Doctor.findOne({ userId: req.user.userId });
-  } else {
-    user = await Patient.findOne({ userId: req.user.userId });
-  }
-
-  console.log(req.user);
-
-  user.firstName = firstName;
-  user.lastName = lastName;
-  user.specialist = specialist;
-  user.address = address;
-  user.degree = degree;
-  user.phone = phone;
-  user.age = age;
-
-  await user.save();
-  res.status(StatusCodes.OK).json({ user });
 };

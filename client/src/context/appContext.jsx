@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useContext } from "react";
+import React, { useState, useReducer, useContext, useEffect } from "react";
 import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
@@ -14,13 +14,18 @@ import {
   ADD_NEW_PATIENT_SUCCESS,
   ADD_NEW_PATIENT_ERROR,
   DELETE_MY_PATIENT,
+  GET_MY_PATIENTS_BEGIN,
+  GET_MY_PATIENTS_SUCCESS,
+  GET_WAITING_LIST,
+  GET_STATS,
+  DECLINE_MY_PATIENT,
+  CHANGE_PAGE,
+  CHANGE_PARAM,
 } from "./actions";
 import axios from "axios";
 
 import reducer from "./reducer";
-import data from "../fakeData/MOCK_DATA.json";
-import newData from "../../../server/MOCK_DATA.json";
-console.log(newData);
+// import newData from "../../../server/MOCK_DATA.json";
 
 const token = localStorage.getItem("token");
 let user = localStorage.getItem("user");
@@ -41,13 +46,17 @@ const initialSate = {
   token: token || null,
   waiting: [],
   totalWaiting: 0,
-  numberOfWaitingPages: 1,
   waitingPage: 1,
   myPatients: [],
   totalPatients: 0,
+  page: 1,
   numberOfPatientPages: 1,
-  patientPage: 1,
-  data: data ?? [],
+  waitingList: [],
+  stats: {},
+  search: "",
+  levelDis: "all",
+  gender: "all",
+  sort: "a-z",
 };
 
 const AppContext = React.createContext();
@@ -139,6 +148,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: UPDATE_USER_BEGIN });
     try {
       const { data } = await authFetch.patch("/auth/updateUser", info);
+      console.log(data);
       dispatch({ type: UPDATE_USER_SUCCESS, payload: data });
     } catch (err) {
       dispatch({
@@ -167,13 +177,83 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const getAllPatients = async () => {
-    console.log("done");
+  const changeParams = (params) => {
+    console.log(params);
+    dispatch({ type: CHANGE_PARAM, payload: { params } });
   };
 
-  const deleteMyPatient = (firstName) => {
-    const newData = state.data.filter((el) => el.firstName !== firstName);
-    dispatch({ type: DELETE_MY_PATIENT, payload: newData });
+  const getAllPatients = async (params) => {
+    const { search, levelDis, gender, sort } = params ?? state;
+    if (params) {
+      dispatch({ type: CHANGE_PAGE, payload: { page: 1 } });
+    }
+
+    let url = `/doctors?page=${state.page}&levelDis=${levelDis}&gender=${gender}&sort=${sort}`;
+
+    if (search) {
+      url += `&search=${search}`;
+    }
+
+    dispatch({ type: GET_MY_PATIENTS_BEGIN });
+    try {
+      const { data } = await authFetch.get(url);
+      const { myPatients, totalPatients, numberOfPatientPages } = data;
+      dispatch({
+        type: GET_MY_PATIENTS_SUCCESS,
+        payload: {
+          myPatients,
+          totalPatients,
+          numberOfPatientPages,
+        },
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const changePage = (page) => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
+  };
+
+  const deleteMyPatient = async (id, type) => {
+    try {
+      if (type === "decline" || type === "accept") {
+        const newList = state.waitingList.filter((el) => el._id !== id);
+        dispatch({ type: DECLINE_MY_PATIENT, payload: newList });
+        if (type === "decline") {
+          const { data } = await authFetch.delete(`/doctors/decline/${id}`);
+          console.log(data);
+        } else {
+          const { data } = await authFetch.delete(`/doctors/accept/${id}`);
+          console.log(data);
+        }
+      } else {
+        const newList = state.myPatients.filter((el) => el._id !== id);
+        dispatch({ type: DELETE_MY_PATIENT, payload: newList });
+        const { data } = await authFetch.delete(`/doctors/delete/${id}`);
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const getWaitingList = async () => {
+    try {
+      const { data } = await authFetch.get("doctors/waiting-list");
+      dispatch({ type: GET_WAITING_LIST, payload: data.myPatients });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const getStats = async () => {
+    try {
+      const { data } = await authFetch.get("doctors/get-stats");
+      dispatch({ type: GET_STATS, payload: data });
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   return (
@@ -188,6 +268,11 @@ const AppProvider = ({ children }) => {
         updateUser,
         deleteMyPatient,
         addPatient,
+        getAllPatients,
+        getWaitingList,
+        getStats,
+        changePage,
+        changeParams,
       }}
     >
       {children}
