@@ -4,14 +4,26 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { useAppContext } from "../../context/appContext";
 
-const PatientCard = ({ fullName, online, level, gender, age, detail, id }) => {
+const PatientCard = ({
+  fullName,
+  online,
+  level,
+  gender,
+  age,
+  detail,
+  id,
+  handleClick,
+}) => {
   const { deleteMyPatient } = useAppContext();
 
   return (
     <article className="rounded-xl bg-white shadow-lg hover:shadow-xl">
-      <header className="flex items-center justify-between border-b-2 border-green-300 py-4 px-6">
+      <header
+        className="flex cursor-pointer items-center justify-between border-b-2 border-green-300 py-4 px-6"
+        onClick={() => handleClick(id)}
+      >
         <div className="flex w-9/12 items-center">
-          <div className="mr-8 flex h-[60px] w-[60px] items-center justify-center rounded-md bg-green-500 text-2xl font-bold uppercase text-white">
+          <div className="avatar">
             <h2 className="uppercase">{fullName[0]}</h2>
           </div>
           <div>

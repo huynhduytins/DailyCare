@@ -22,4 +22,12 @@
   .icon-login {
     @apply absolute top-[15px] left-[1px] text-green-600;
   }
+
+  .nav-link {
+    @apply flex items-center py-5 pl-12 capitalize text-green-500 transition-all duration-300 ease-in-out hover:bg-gray-50 hover:pl-14 hover:text-green-700;
+  }
+
+  .avatar {
+    @apply mr-8 flex h-[60px] w-[60px] items-center justify-center rounded-md bg-green-500 text-2xl font-bold uppercase text-white;
+  }
 }

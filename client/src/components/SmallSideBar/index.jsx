@@ -6,7 +6,8 @@ import Links from "../../utils/Links";
 import { NavLink } from "react-router-dom";
 
 const SmallSideBar = () => {
-  const { showSidebar, toggleSidebar } = useAppContext();
+  const { showSidebar, toggleSidebar, linkActive, changeActive } =
+    useAppContext();
 
   return (
     <>
@@ -25,12 +26,13 @@ const SmallSideBar = () => {
                 <NavLink
                   to={link.path}
                   key={link.id}
-                  onClick={toggleSidebar}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "flex items-center capitalize  text-green-700 transition-all hover:text-green-400"
-                      : "flex items-center capitalize  text-green-500 transition-all hover:text-green-400"
-                  }
+                  onClick={() => {
+                    changeActive(link.id);
+                    toggleSidebar();
+                  }}
+                  className={`flex items-center capitalize  text-green-500 transition-all hover:text-green-400 ${
+                    linkActive === link.id ? "text-green-700" : ""
+                  }`}
                 >
                   <span className="mr-4 text-2xl">{link.icon}</span>
                   {link.text}

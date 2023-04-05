@@ -4,7 +4,7 @@ import Links from "../../utils/Links";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-  const { showSidebar } = useAppContext();
+  const { showSidebar, linkActive, changeActive } = useAppContext();
 
   return (
     <div
@@ -21,7 +21,10 @@ const Sidebar = () => {
             <NavLink
               to={link.path}
               key={link.id}
-              className="flex items-center py-5 pl-12 capitalize text-green-500 transition-all duration-300 ease-in-out hover:bg-gray-50 hover:pl-14 hover:text-green-700 "
+              className={`nav-link ${
+                linkActive === link.id ? "pl-14 text-green-700" : ""
+              }`}
+              onClick={() => changeActive(link.id)}
             >
               <span className="mr-4 text-2xl">{link.icon}</span>
               {link.text}
