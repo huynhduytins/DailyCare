@@ -20,6 +20,7 @@ import {
   DECLINE_MY_PATIENT,
   CHANGE_PAGE,
   CHANGE_PARAM,
+  CHANGE_ACTIVE,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -120,6 +121,7 @@ const reducer = (state, action) => {
       alertType: "success",
       alertText: "PATIENT WAS SUCCESSFULLY ADDED.",
       patientAccount: action.payload,
+      localCache: {},
     };
   }
 
@@ -149,6 +151,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       myPatients: [...action.payload],
+      localCache: {},
     };
   }
 
@@ -202,6 +205,13 @@ const reducer = (state, action) => {
       levelDis: action.payload.params.levelDis,
       gender: action.payload.params.gender,
       sort: action.payload.params.sort,
+    };
+  }
+
+  if (action.type === CHANGE_ACTIVE) {
+    return {
+      ...state,
+      linkActive: action.payload.active,
     };
   }
 };

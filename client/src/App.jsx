@@ -1,5 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login";
+
+import PatientProfile from "./pages/Patient/PatientProfile";
+import AllDoctors from "./pages/Patient/AllDoctors";
+import PatientPage from "./pages/Patient";
+
 import {
   AddPatient,
   PatientList,
@@ -27,7 +32,11 @@ function App() {
           <Route path="all-patients" element={<PatientList />} />
         </Route>
         <Route path="/" element={<Login />} />
-        <Route path="/user" element={<div>Patient</div>} />
+
+        <Route path="/user/" element={<PatientPage />}>
+          <Route index element={<PatientProfile />} />
+          <Route path="all-doctors" element={<AllDoctors />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

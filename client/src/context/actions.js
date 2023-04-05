@@ -30,3 +30,5 @@ export const CHANGE_PAGE = "CHANGE_PAGE";
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 
 export const CHANGE_PARAM = "CHANGE_PARAM";
+
+export const CHANGE_ACTIVE = "CHANGE_ACTIVE";

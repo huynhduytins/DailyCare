@@ -35,7 +35,7 @@ const SearchContainer = () => {
         </div>
         <Select
           items={["all", "Good", "Bad", "Urgent"]}
-          title="Condition Of Patient's Health"
+          title="Patient Health Condition"
           name="levelDis"
         />
         <Select

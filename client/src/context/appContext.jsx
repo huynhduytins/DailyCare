@@ -21,6 +21,7 @@ import {
   DECLINE_MY_PATIENT,
   CHANGE_PAGE,
   CHANGE_PARAM,
+  CHANGE_ACTIVE,
 } from "./actions";
 import axios from "axios";
 
@@ -38,25 +39,33 @@ const initialSate = {
   showSidebar: true,
   alertText: "",
   alertType: "",
+  linkActive: 1,
+
+  // INFO
   infoUser: {},
   patientAccount: {},
   username: user?.username ?? null,
   email: user?.email ?? null,
   role: user?.role ?? null,
   token: token || null,
+
+  // ALL PATIENTS
   waiting: [],
-  totalWaiting: 0,
-  waitingPage: 1,
   myPatients: [],
   totalPatients: 0,
   page: 1,
   numberOfPatientPages: 1,
   waitingList: [],
   stats: {},
+
+  // QUERY
   search: "",
   levelDis: "all",
   gender: "all",
   sort: "a-z",
+
+  // CACHING
+  localCache: {},
 };
 
 const AppContext = React.createContext();
@@ -195,17 +204,34 @@ const AppProvider = ({ children }) => {
     }
 
     dispatch({ type: GET_MY_PATIENTS_BEGIN });
+
+    const queryString = `${state.page}-${search}-${levelDis}-${gender}-${sort}`;
+
     try {
-      const { data } = await authFetch.get(url);
-      const { myPatients, totalPatients, numberOfPatientPages } = data;
-      dispatch({
-        type: GET_MY_PATIENTS_SUCCESS,
-        payload: {
-          myPatients,
-          totalPatients,
-          numberOfPatientPages,
-        },
-      });
+      if (state.localCache[queryString]) {
+        const { myPatients, totalPatients, numberOfPatientPages } =
+          state.localCache[queryString];
+        dispatch({
+          type: GET_MY_PATIENTS_SUCCESS,
+          payload: {
+            myPatients,
+            totalPatients,
+            numberOfPatientPages,
+          },
+        });
+      } else {
+        const { data } = await authFetch.get(url);
+        const { myPatients, totalPatients, numberOfPatientPages } = data;
+        state.localCache[queryString] = data;
+        dispatch({
+          type: GET_MY_PATIENTS_SUCCESS,
+          payload: {
+            myPatients,
+            totalPatients,
+            numberOfPatientPages,
+          },
+        });
+      }
     } catch (error) {
       console.log(error.response);
     }
@@ -256,6 +282,10 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const changeActive = (active) => {
+    dispatch({ type: CHANGE_ACTIVE, payload: { active } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -273,6 +303,7 @@ const AppProvider = ({ children }) => {
         getStats,
         changePage,
         changeParams,
+        changeActive,
       }}
     >
       {children}
