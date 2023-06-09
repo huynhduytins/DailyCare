@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaSearch, FaPhoneAlt } from "react-icons/fa";
 import { BiCaretRight } from "react-icons/bi";
-import ButtonClient from "../../ButtonClient";
 
 const NavbarPatient = () => {
   return (
     <header>
-      <nav className="p-6">
-        <div className="flex items-center justify-between font-medium font-semibold text-[#1f2278]">
+      <nav className="sticky top-0 z-50 w-full p-6">
+        <div className="flex items-center justify-between font-semibold text-[#1f2278]">
           <div className="flex basis-1/6  justify-center">
             <img
               src="../../../src/assets/logo2.png"
@@ -66,9 +65,9 @@ const NavbarPatient = () => {
               <p>(+84) 999 888 777</p>
             </li>
             <li>
-              <ButtonClient color={"#565ACF"}>
+              <button className="button-client bg-[#565ACF] hover:bg-[#6065e6]">
                 CONTACT US <BiCaretRight className="text-2xl" />
-              </ButtonClient>
+              </button>
             </li>
           </ul>
         </div>

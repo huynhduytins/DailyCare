@@ -30,4 +30,8 @@
   .avatar {
     @apply mr-8 flex h-[60px] w-[60px] items-center justify-center rounded-md bg-green-500 text-2xl font-bold uppercase text-white;
   }
+
+  .button-client {
+    @apply flex items-center gap-2 rounded-lg py-3 px-5 font-semibold text-white;
+  }
 }
