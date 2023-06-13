@@ -1,11 +1,30 @@
 import NavbarPatient from "../../components/PatientComponents/Nav";
 import Home from "./Home/inex";
+import About from "./About";
+import Content from "./Content";
+import Footer from "./Footer";
+import { useState } from "react";
 
 const PatientPage = () => {
+  const [changeScroll, setChangeScroll] = useState(false);
+
+  const changeColor = () => {
+    if (window.scrollY >= 80) {
+      setChangeScroll(true);
+    } else {
+      setChangeScroll(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeColor);
+
   return (
-    <div className="relative -z-20 bg-[url('../../../../src/assets/background.jpg')] after:absolute after:-bottom-96 after:z-10 after:h-[300px] after:w-full after:bg-[url('../../../../src/assets/after.png')] after:content-[''] md:h-[900px] md:after:bottom-0 lg:h-[1085px]">
-      <NavbarPatient />
+    <div className="relative">
+      <NavbarPatient changeScroll={changeScroll} />
       <Home />
+      <About />
+      <Content />
+      <Footer />
     </div>
   );
 };

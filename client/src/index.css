@@ -32,6 +32,6 @@
   }
 
   .button-client {
-    @apply flex items-center gap-2 rounded-lg py-3 px-5 font-semibold text-white;
+    @apply flex items-center justify-center gap-2 rounded-lg py-3 px-5 font-semibold text-white shadow-lg;
   }
 }

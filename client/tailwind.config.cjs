@@ -10,6 +10,7 @@ module.exports = {
       lg: "992px",
       md: "825px",
       xl: "1200px",
+      xxl: "1500px",
     },
     extend: {
       animation: {

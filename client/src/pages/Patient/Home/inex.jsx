@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <main className="mt-10">
+    <main className="mt-32">
       <div className="mr-auto ml-auto flex w-3/4 items-center">
         <div className="basis-3/5">
           <h5 className="mt-10 w-[245px] bg-[url('../../../../../src/assets/bg-text.png')] text-sm font-semibold text-[#565ACF] md:w-[345px] md:text-xl ">
@@ -20,27 +20,27 @@ const Home = () => {
       <img
         src="../../../../../src/assets/triangle.png"
         alt=""
-        className="absolute bottom-80 left-20 -z-10 animate-updown-fast"
+        className="absolute top-[500px] left-20 -z-10 animate-updown-fast"
       />
       <img
         src="../../../../../src/assets/round.png"
         alt=""
-        className="absolute top-80 left-52 -z-10 animate-updown-fast"
+        className="absolute top-40 left-52 -z-10 animate-updown-fast"
       />
       <img
         src="../../../../../src/assets/square.png"
         alt=""
-        className="absolute top-72 left-[53%] -z-10 animate-updown-fast"
+        className="absolute top-44 left-[53%] -z-10 animate-updown-fast"
       />
       <img
         src="../../../../../src/assets/plus.png"
         alt=""
-        className="absolute bottom-52 left-[45%] -z-10 animate-updown-fast"
+        className="absolute top-[600px] left-[45%] -z-10 animate-updown-fast"
       />
       <img
         src="../../../../../src/assets/wave.png"
         alt=""
-        className="absolute bottom-60 left-[82%] -z-10 animate-left-right"
+        className="absolute top-[600px] left-[82%] -z-10 animate-left-right"
       />
     </main>
   );

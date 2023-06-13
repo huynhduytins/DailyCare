@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
-import { FaSearch, FaPhoneAlt } from "react-icons/fa";
+import { FaSearch, FaPhoneAlt, FaPowerOff } from "react-icons/fa";
 import { BiCaretRight } from "react-icons/bi";
 
-const NavbarPatient = () => {
+const NavbarPatient = (props) => {
   return (
     <header>
-      <nav className="sticky top-0 z-50 w-full p-6">
+      <nav
+        className={`fixed top-0 z-50 w-full px-6 py-3 ${
+          props.changeScroll && "bg-slate-50"
+        } transition duration-150 ease-out`}
+      >
         <div className="flex items-center justify-between font-semibold text-[#1f2278]">
           <div className="flex basis-1/6  justify-center">
             <img
@@ -66,7 +70,7 @@ const NavbarPatient = () => {
             </li>
             <li>
               <button className="button-client bg-[#565ACF] hover:bg-[#6065e6]">
-                CONTACT US <BiCaretRight className="text-2xl" />
+                LOGOUT <FaPowerOff className="text-lg" />
               </button>
             </li>
           </ul>
