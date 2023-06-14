@@ -1,9 +1,9 @@
 const Home = () => {
   return (
-    <main className="mt-32">
+    <main className="mt-40 h-1/2 md:h-1/2">
       <div className="mr-auto ml-auto flex w-3/4 items-center">
         <div className="basis-3/5">
-          <h5 className="mt-10 w-[245px] bg-[url('../../../../../src/assets/bg-text.png')] text-sm font-semibold text-[#565ACF] md:w-[345px] md:text-xl ">
+          <h5 className="mt-10 w-[245px] bg-[url('../../../../../src/assets/bg-text.png')] text-sm font-semibold text-[#565ACF] md:w-[345px] md:text-xl">
             We Provide All Health Care Solution
           </h5>
           <h2 className="my-9 w-fit text-3xl font-bold tracking-wide text-[#1F2278] md:text-5xl">

@@ -7,7 +7,7 @@ const NavbarPatient = (props) => {
     <header>
       <nav
         className={`fixed top-0 z-50 w-full px-6 py-3 ${
-          props.changeScroll && "bg-slate-50"
+          props.changeScroll && "bg-slate-50 shadow-lg"
         } transition duration-150 ease-out`}
       >
         <div className="flex items-center justify-between font-semibold text-[#1f2278]">

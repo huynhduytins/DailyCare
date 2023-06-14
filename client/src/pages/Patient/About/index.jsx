@@ -5,7 +5,7 @@ import { LuSyringe } from "react-icons/lu";
 
 const About = () => {
   return (
-    <section className="my-20 flex flex-col xl:flex-row xl:items-center xl:justify-center">
+    <section className="flex h-screen flex-col xl:flex-row xl:items-center xl:justify-center">
       <ul className="mx-w-[730px] relative flex basis-1/2 flex-wrap items-end gap-5 xxl:basis-2/5">
         <li className="">
           <img
