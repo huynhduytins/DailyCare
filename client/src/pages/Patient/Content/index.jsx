@@ -20,7 +20,6 @@ const cards = [
 ];
 
 const Content = () => {
-  const [onMouse, setOnMouse] = useState("");
   return (
     <div className="flex h-2/3 w-full flex-col items-center gap-14">
       <h3 className="w-fit bg-[url('../../../../src/assets/bg-about.png')] px-2 text-lg font-bold text-[#F17732]">
@@ -31,11 +30,10 @@ const Content = () => {
         {cards.map((card) => {
           return (
             <Card
+              key={card.num}
               num={card.num}
               title={card.title}
               para={card.para}
-              setOnMouse={setOnMouse}
-              onMouse={onMouse}
             />
           );
         })}

@@ -17,6 +17,7 @@ module.exports = {
         "updown-slow": "updown 2.5s infinite alternate",
         "updown-fast": "updown 1.5s infinite alternate",
         "left-right": "leftright 1.5s infinite alternate",
+        "left-right-fast": "leftrightfast 1.5s infinite alternate",
       },
       keyframes: {
         updown: {
@@ -26,6 +27,10 @@ module.exports = {
         leftright: {
           "0%": { transform: "translatex(0)" },
           "100%": { transform: "translatex(-10px)" },
+        },
+        leftrightfast: {
+          "0%": { transform: "translatex(0)" },
+          "100%": { transform: "translatex(15px)" },
         },
       },
     },
