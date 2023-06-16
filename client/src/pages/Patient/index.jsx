@@ -5,6 +5,8 @@ import Content from "./Content";
 import Footer from "./Footer";
 import { useState } from "react";
 import Booking from "./Booking";
+import Evaluate from "./Evaluate";
+import News from "./News";
 
 const PatientPage = () => {
   const [changeScroll, setChangeScroll] = useState(false);
@@ -26,6 +28,8 @@ const PatientPage = () => {
       <About />
       <Content />
       <Booking />
+      <Evaluate />
+      <News />
       <Footer />
     </div>
   );
