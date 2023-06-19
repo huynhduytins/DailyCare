@@ -96,7 +96,6 @@ const Chatbox = () => {
         >
           <ChatContainer>
             <MessageList
-              scrollBehavior="smooth"
               typingIndicator={
                 isTyping ? (
                   <TypingIndicator content="ChatGPT is typing" />
