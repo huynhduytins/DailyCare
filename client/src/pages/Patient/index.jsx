@@ -7,6 +7,7 @@ import { useState } from "react";
 import Booking from "./Booking";
 import Evaluate from "./Evaluate";
 import News from "./News";
+import Chatbox from "./Chatbot";
 
 const PatientPage = () => {
   const [changeScroll, setChangeScroll] = useState(false);
@@ -31,6 +32,7 @@ const PatientPage = () => {
       <Evaluate />
       <News />
       <Footer />
+      <Chatbox />
     </div>
   );
 };
