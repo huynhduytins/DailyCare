@@ -8,6 +8,7 @@ import Booking from "./Booking";
 import Evaluate from "./Evaluate";
 import News from "./News";
 import Chatbox from "./Chatbot";
+import { ProtectedRoute } from "../Dashboard";
 
 const PatientPage = () => {
   const [changeScroll, setChangeScroll] = useState(false);
@@ -23,17 +24,19 @@ const PatientPage = () => {
   window.addEventListener("scroll", changeColor);
 
   return (
-    <div className="relative">
-      <NavbarPatient changeScroll={changeScroll} />
-      <Home />
-      <About />
-      <Content />
-      <Booking />
-      <Evaluate />
-      <News />
-      <Footer />
-      <Chatbox />
-    </div>
+    <ProtectedRoute>
+      <div className="relative">
+        <NavbarPatient changeScroll={changeScroll} />
+        <Home />
+        <About />
+        <Content />
+        <Booking />
+        <Evaluate />
+        <News />
+        <Footer />
+        <Chatbox />
+      </div>
+    </ProtectedRoute>
   );
 };
 

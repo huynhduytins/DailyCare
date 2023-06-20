@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaSearch, FaPhoneAlt, FaPowerOff } from "react-icons/fa";
-import { BiCaretRight } from "react-icons/bi";
+import { useAppContext } from "../../../context/appContext";
 
 const NavbarPatient = (props) => {
+  const { logoutUser } = useAppContext();
+
   return (
     <header>
       <nav
@@ -11,14 +13,19 @@ const NavbarPatient = (props) => {
         } transition duration-150 ease-out`}
       >
         <div className="flex items-center justify-between font-semibold text-[#1f2278]">
-          <div className="flex basis-1/6  justify-center">
+          <img
+            src="../../../src/assets/menu.svg"
+            alt=""
+            className="block md:hidden"
+          />
+          <div className="hidden basis-1/6 justify-center  md:flex">
             <img
               src="../../../src/assets/logo2.png"
               alt="logo"
               className="w-56"
             />
           </div>
-          <ul className="flex basis-2/5 justify-between">
+          <ul className="hidden basis-2/5 justify-between md:flex">
             <li>
               <Link
                 to="#"
@@ -69,7 +76,10 @@ const NavbarPatient = (props) => {
               <p>(+84) 999 888 777</p>
             </li>
             <li>
-              <button className="button-client bg-[#565ACF] hover:bg-[#6065e6]">
+              <button
+                className="button-client bg-[#565ACF] hover:bg-[#6065e6]"
+                onClick={logoutUser}
+              >
                 LOGOUT <FaPowerOff className="text-lg" />
               </button>
             </li>

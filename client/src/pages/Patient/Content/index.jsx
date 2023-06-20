@@ -21,7 +21,7 @@ const cards = [
 
 const Content = () => {
   return (
-    <div className="flex h-2/3 w-full flex-col items-center gap-14">
+    <div className="mb-44 hidden h-2/3 w-full flex-col items-center gap-14 md:flex">
       <h3 className="w-fit bg-[url('../../../../src/assets/bg-about.png')] px-2 text-lg font-bold text-[#F17732]">
         Working Process
       </h3>

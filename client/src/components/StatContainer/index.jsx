@@ -8,7 +8,6 @@ import { useAppContext } from "../../context/appContext";
 
 const StatContainer = () => {
   const { stats } = useAppContext();
-  console.log(stats);
 
   const stat = [
     {

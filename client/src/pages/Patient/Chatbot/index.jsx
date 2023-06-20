@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
@@ -52,10 +52,7 @@ const Chatbox = () => {
 
     const apiRequestBody = {
       model: "gpt-3.5-turbo",
-      messages: [
-        systemMessage, // The system message DEFINES the logic of our chatGPT
-        ...apiMessages, // The messages from our chat with ChatGPT
-      ],
+      messages: [systemMessage, ...apiMessages],
     };
 
     await fetch("https://api.openai.com/v1/chat/completions", {
@@ -85,17 +82,16 @@ const Chatbox = () => {
   return (
     <>
       <div
-        className={`fixed bottom-24 right-10 z-50 h-[500px] w-1/5 overflow-hidden ${
-          !openChat && "-z-50"
-        }`}
+        className={`fixed bottom-24 right-10 h-[500px] w-1/5 overflow-hidden`}
       >
         <MainContainer
-          className={`z-50 border-2 border-[#bbbeff] p-2 shadow-lg ${
-            openChat ? "h-full" : "h-0 border-0 p-0"
+          className={`z-50 border-[#bbbeff] shadow-lg ${
+            openChat ? "h-full border-2 p-2" : "h-[0%] border-0 p-0"
           } duration-500`}
         >
           <ChatContainer>
             <MessageList
+              scrollBehavior="smooth"
               typingIndicator={
                 isTyping ? (
                   <TypingIndicator content="ChatGPT is typing" />
@@ -110,11 +106,24 @@ const Chatbox = () => {
           </ChatContainer>
         </MainContainer>
       </div>
-      <img
-        src="../../../../src/assets/technology.svg"
-        className="fixed bottom-6 right-6 w-16 cursor-pointer rounded-full bg-[#fff1f1] p-2"
+      <div
         onClick={() => setOpenChat(!openChat)}
-      />
+        className="fixed bottom-6 right-6 h-16 w-20 cursor-pointer overflow-hidden rounded-full bg-[#fff3f3] p-2"
+      >
+        <img
+          src="../../../../src/assets/bot.svg"
+          className={`absolute top-0 left-2 w-16 duration-500 ${
+            openChat ? "translate-y-full" : "translate-y-0"
+          }`}
+        />
+        <img
+          src="../../../../src/assets/arrow.svg"
+          alt=""
+          className={`absolute top-2 left-5 w-10 duration-500 ${
+            openChat ? "translate-y-0" : "-translate-y-full"
+          }`}
+        />
+      </div>
     </>
   );
 };
