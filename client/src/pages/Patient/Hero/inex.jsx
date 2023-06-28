@@ -1,4 +1,4 @@
-const Home = () => {
+const Hero = () => {
   return (
     <main className="mt-40 h-1/2 md:h-1/2">
       <div className="mr-auto ml-auto flex w-3/4 items-center">
@@ -46,4 +46,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Hero;

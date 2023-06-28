@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 
 import PatientProfile from "./pages/Patient/PatientProfile";
 import AllDoctors from "./pages/Patient/AllDoctors";
-import PatientPage from "./pages/Patient";
+import PatientPage from "./pages/Patient/PatientPage";
 
 import {
   AddPatient,
@@ -13,6 +13,9 @@ import {
   SharedLayout,
   ProtectedRoute,
 } from "./pages/Dashboard";
+import PatientSharedLayout from "./pages/Patient/PatientSharedLayout";
+import AboutUs from "./pages/Patient/AboutUs";
+import FAQ from "./pages/Patient/FAQ";
 
 function App() {
   return (
@@ -33,9 +36,17 @@ function App() {
         </Route>
         <Route path="/" element={<Login />} />
 
-        <Route path="/user/" element={<PatientPage />}>
-          <Route index element={<PatientProfile />} />
-          <Route path="all-doctors" element={<AllDoctors />} />
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute>
+              <PatientSharedLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<PatientPage />} />
+          <Route path="about" element={<AboutUs />} />
+          <Route path="faq" element={<FAQ />} />
         </Route>
       </Routes>
     </BrowserRouter>

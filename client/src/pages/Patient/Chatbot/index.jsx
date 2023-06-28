@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
@@ -18,7 +18,7 @@ const systemMessage = {
     "Explain things like you're talking to a software professional with 2 years of experience.",
 };
 
-const Chatbox = () => {
+const Chatbot = () => {
   const [messages, setMessages] = useState([
     { message: "Hello, I am ChatGPT!", sender: "ChatGPT" },
   ]);
@@ -128,4 +128,4 @@ const Chatbox = () => {
   );
 };
 
-export default Chatbox;
+export default Chatbot;

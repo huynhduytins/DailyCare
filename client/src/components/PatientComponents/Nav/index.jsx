@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaSearch, FaPhoneAlt, FaPowerOff } from "react-icons/fa";
 import { useAppContext } from "../../../context/appContext";
+import DropDown from "../DropDown";
+import { useState } from "react";
 
 const NavbarPatient = (props) => {
   const { logoutUser } = useAppContext();
+  const [hover, setHover] = useState(false);
 
   return (
     <header>
@@ -34,13 +37,17 @@ const NavbarPatient = (props) => {
                 Home
               </Link>
             </li>
-            <li>
+            <li
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
               <Link
                 to="#"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
                 Pages
               </Link>
+              <DropDown hover={hover} />
             </li>
             <li>
               <Link
@@ -55,7 +62,7 @@ const NavbarPatient = (props) => {
                 to="#"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
-                Blog
+                Blogs
               </Link>
             </li>
             <li>
@@ -67,14 +74,7 @@ const NavbarPatient = (props) => {
               </Link>
             </li>
           </ul>
-          <ul className="flex basis-1/3 items-center justify-end gap-10">
-            <li>
-              <FaSearch className="cursor-pointer text-lg text-[#565ACF]" />
-            </li>
-            <li className="hidden items-center gap-3 text-xl font-bold lg:flex">
-              <FaPhoneAlt className="cursor-pointer text-lg text-[#565ACF]" />
-              <p>(+84) 999 888 777</p>
-            </li>
+          <ul className="flex basis-1/6 items-center justify-end gap-10">
             <li>
               <button
                 className="button-client bg-[#565ACF] hover:bg-[#6065e6]"
