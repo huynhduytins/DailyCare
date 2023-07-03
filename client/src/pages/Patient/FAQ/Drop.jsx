@@ -1,19 +1,22 @@
-import { useState } from "react";
-
-const Drop = () => {
-  const [show, setShow] = useState(true);
+const Drop = ({ question, hanldeActive, active, idx }) => {
   return (
-    <section className="w-1/4 tracking-wide">
+    <section className="w-[500px] tracking-wide">
       <div
-        className="flex cursor-pointer justify-between rounded-lg bg-[#565ACF] py-3 px-5"
+        className={`flex cursor-pointer justify-between rounded-lg bg-[#565ACF] py-4 px-6 duration-300 ${
+          active ? "bg-[#f7813c]" : ""
+        }`}
         onClick={() => {
-          setShow(!show);
+          if (active) {
+            hanldeActive(-1);
+          } else {
+            hanldeActive(idx);
+          }
         }}
       >
-        <h2 className="font-bold text-white">How Doctor Can Ease Your Pain?</h2>
+        <h2 className="font-bold text-white">{question.title}</h2>
         <img
           src={`${
-            show
+            active
               ? "../../../../../src/assets/arrow-up.svg"
               : "../../../../../src/assets/arrow-down.svg"
           }`}
@@ -23,13 +26,10 @@ const Drop = () => {
       </div>
       <div
         className={`${
-          show ? "" : "hidden h-0"
-        } rounded-lg  bg-slate-100 py-3 px-5 transition-all  duration-1000`}
+          active ? "py-3 px-5" : "h-0 py-0"
+        } rounded-lg bg-slate-100 transition-all duration-300`}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ipsam
-        deserunt cumque magnam, maiores earum ipsum eligendi necessitatibus
-        distinctio libero dolor ab impedit accusantium iure, sint eum nihil nisi
-        consequuntur.
+        {active && <p>{question.content}</p>}
       </div>
     </section>
   );

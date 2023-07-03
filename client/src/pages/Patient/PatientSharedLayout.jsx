@@ -22,7 +22,7 @@ const PatientSharedLayout = () => {
       <NavbarPatient changeScroll={changeScroll} />
       <Outlet />
       <Chatbot />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
