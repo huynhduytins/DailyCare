@@ -1,6 +1,14 @@
 import Alert from "../../components/Alert";
 
-const Form = ({ title, children, handleSubmit, button, showAlert, submit }) => {
+const Form = ({
+  title,
+  children,
+  handleSubmit,
+  button,
+  showAlert,
+  submit,
+  client = false,
+}) => {
   return (
     <div className="mt-16 mb-10 flex w-full justify-center">
       <form
@@ -16,7 +24,11 @@ const Form = ({ title, children, handleSubmit, button, showAlert, submit }) => {
         {children}
         <div className="mt-14 flex w-full justify-end">
           <button
-            className="rounded bg-green-500 py-2 px-10 font-semibold text-white hover:bg-green-700"
+            className={`rounded ${
+              client
+                ? "bg-[#565ACF] hover:bg-[#6065e6]"
+                : "bg-green-500 hover:bg-green-700"
+            } py-2 px-10 font-semibold text-white`}
             disabled={submit}
           >
             {button}

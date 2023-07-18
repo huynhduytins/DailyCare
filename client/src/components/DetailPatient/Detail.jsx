@@ -1,13 +1,17 @@
+import LineChartPatient from "../LineChart";
+
 const Detail = ({ info }) => {
   return (
-    <>
+    <div className="mx-5">
       <div className="mt-9 flex w-full justify-between">
         <div className="flex w-[65%] items-center gap-5">
           <h2 className="font-bold">Full Name</h2>
           <input
             type="text"
             className="input-field w-[230px] py-2 pl-0 text-center"
-            value={`${info.firstName ?? ""} - ${info.lastName ?? ""}`}
+            value={`${info.firstName ?? ""} ${
+              info.lastName ? ` - ${info.lastName}` : ""
+            }`}
             disabled
           />
         </div>
@@ -68,7 +72,7 @@ const Detail = ({ info }) => {
           value={info.detail}
         />
       </div>
-    </>
+    </div>
   );
 };
 

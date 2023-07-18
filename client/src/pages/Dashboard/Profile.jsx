@@ -52,21 +52,21 @@ const Profile = () => {
     <Form
       title="Profile"
       handleSubmit={handleSubmit}
-      button="Save"
+      button="Lưu"
       showAlert={showAlert}
       submit={submit}
     >
       <div className="mt-12 flex flex-col gap-12 lg:flex-row ">
         <InputForm
           type="firstName"
-          name="First Name"
+          name="Họ"
           value={infoUser?.firstName ?? ""}
           submit={submit}
           setSubmit={setSubmit}
         />
         <InputForm
           type="lastName"
-          name="Last Name"
+          name="Tên"
           value={infoUser?.lastName ?? ""}
           submit={submit}
           setSubmit={setSubmit}
@@ -76,14 +76,14 @@ const Profile = () => {
       <div className="mt-16 flex flex-col gap-12 lg:flex-row ">
         <InputForm
           type="specialist"
-          name="Specialist"
+          name="Chuyên Khoa"
           value={infoUser?.specialist ?? ""}
           submit={submit}
           setSubmit={setSubmit}
         />
         <InputForm
           type="degree"
-          name="Degree"
+          name="Trình độ học vấn"
           value={infoUser?.degree ?? ""}
           submit={submit}
           setSubmit={setSubmit}
@@ -93,7 +93,7 @@ const Profile = () => {
       <div className="mt-16 flex flex-col gap-12 md:flex-row">
         <InputForm
           type="address"
-          name="Address"
+          name="Địa chỉ"
           value={infoUser?.address ?? ""}
           submit={submit}
           setSubmit={setSubmit}
@@ -101,14 +101,14 @@ const Profile = () => {
         <div className="flex w-full gap-10">
           <InputForm
             type="phone"
-            name="Phone Number"
+            name="Số điện thoại"
             value={infoUser?.phone ?? ""}
             submit={submit}
             setSubmit={setSubmit}
           />
           <InputForm
             type="age"
-            name="Age"
+            name="Tuổi"
             value={infoUser?.age ?? ""}
             submit={submit}
             setSubmit={setSubmit}

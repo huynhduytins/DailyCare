@@ -3,15 +3,18 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import Card from "./Card";
+import { useTranslation } from "react-i18next";
 
 const Evaluate = () => {
+  const [t] = useTranslation("global");
+
   return (
     <div className="h-screen">
       <h3 className="m-auto w-fit bg-[url('../../../../src/assets/bg-about.png')] px-3 font-bold text-[#F17732]">
-        Testimonial
+        {t("body.evaluate.title")}
       </h3>
       <h2 className="m-auto mt-10 w-1/4 text-center text-4xl font-bold text-[#1F2278]">
-        See What Are The Patients Saying About us
+        {t("body.evaluate.sub")}
       </h2>
       <div className="mt-16 flex items-center justify-center gap-32">
         <div className="relative h-[478px] w-[454px] max-w-[454px] basis-2/5 bg-[url('../../../../src/assets/bg-evaluate.png')]">

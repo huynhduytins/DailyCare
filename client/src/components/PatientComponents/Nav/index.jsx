@@ -3,10 +3,23 @@ import { FaSearch, FaPhoneAlt, FaPowerOff } from "react-icons/fa";
 import { useAppContext } from "../../../context/appContext";
 import DropDown from "../DropDown";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const NavbarPatient = (props) => {
   const { logoutUser } = useAppContext();
   const [hover, setHover] = useState(false);
+  const [t, i18n] = useTranslation("global");
+  const [language, setLanguage] = useState("vietnam");
+
+  const handleChangeLanguage = () => {
+    if (language === "vietnam") {
+      setLanguage("usa");
+      i18n.changeLanguage("en");
+    } else {
+      setLanguage("vietnam");
+      i18n.changeLanguage("vi");
+    }
+  };
 
   return (
     <header>
@@ -23,7 +36,7 @@ const NavbarPatient = (props) => {
           />
           <div className="hidden basis-1/6 justify-center  md:flex">
             <img
-              src="../../../src/assets/logo2.png"
+              src="../../../src/assets/logo.svg"
               alt="logo"
               className="w-56"
             />
@@ -31,10 +44,10 @@ const NavbarPatient = (props) => {
           <ul className="hidden basis-2/5 justify-between md:flex">
             <li>
               <Link
-                to="#"
+                to="/user"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
-                Home
+                {t("header.home")}
               </Link>
             </li>
             <li
@@ -45,16 +58,16 @@ const NavbarPatient = (props) => {
                 to="#"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
-                Pages
+                {t("header.pages")}
               </Link>
               <DropDown hover={hover} />
             </li>
             <li>
               <Link
-                to="#"
+                to="doctors"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
-                Services
+                {t("header.doctors")}
               </Link>
             </li>
             <li>
@@ -62,25 +75,35 @@ const NavbarPatient = (props) => {
                 to="#"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
-                Blogs
+                {t("header.blog")}
               </Link>
             </li>
             <li>
               <Link
-                to="#"
+                to="profile"
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
-                Contact Us
+                {t("header.profile")}
               </Link>
             </li>
           </ul>
-          <ul className="flex basis-1/6 items-center justify-end gap-10">
+          <ul className="flex basis-1/6 items-center justify-between">
+            <li>
+              <button onClick={handleChangeLanguage}>
+                <img
+                  src={`../../../../../src/assets/${language}.png`}
+                  alt=""
+                  className="w-[35px]"
+                />
+              </button>
+            </li>
             <li>
               <button
                 className="button-client bg-[#565ACF] hover:bg-[#6065e6]"
                 onClick={logoutUser}
               >
-                LOGOUT <FaPowerOff className="text-lg" />
+                {t("header.logout")}
+                <FaPowerOff className="text-lg" />
               </button>
             </li>
           </ul>

@@ -20,11 +20,11 @@ const SearchContainer = () => {
   };
 
   return (
-    <Form button="Filter" handleSubmit={handleSubmit}>
+    <Form button="Lọc" handleSubmit={handleSubmit}>
       <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
         <div>
           <label htmlFor="search" className="font-semibold">
-            Search by the first name
+            Tên
           </label>
           <input
             type="text"
@@ -35,15 +35,15 @@ const SearchContainer = () => {
         </div>
         <Select
           items={["all", "Good", "Bad", "Urgent"]}
-          title="Patient Health Condition"
+          title="Tình trạng bệnh nhân"
           name="levelDis"
         />
         <Select
           items={["all", "Male", "Female"]}
-          title="Gender"
+          title="Giới tính"
           name="gender"
         />
-        <Select items={["a-z", "z-a"]} title="Sort" name="sort" />
+        <Select items={["a-z", "z-a"]} title="Thứ tự" name="sort" />
       </div>
     </Form>
   );

@@ -1,16 +1,20 @@
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 const Hero = () => {
+  const [t] = useTranslation("global");
   return (
     <main className="mt-40 h-1/2 md:h-1/2">
       <div className="mr-auto ml-auto flex w-3/4 items-center">
         <div className="basis-3/5">
-          <h5 className="mt-10 w-[245px] bg-[url('../../../../../src/assets/bg-text.png')] text-sm font-semibold text-[#565ACF] md:w-[345px] md:text-xl">
-            We Provide All Health Care Solution
+          <h5 className="mt-10 w-[245px] bg-[url('../../../../../src/assets/bg-text.png')] text-sm font-semibold text-[#565ACF] md:w-fit md:text-xl">
+            {t("body.provide")}
           </h5>
           <h2 className="my-9 w-fit text-3xl font-bold tracking-wide text-[#1F2278] md:text-5xl">
-            Protect Your Health And Take Care To Of Your Health
+            {t("body.title")}
           </h2>
           <button className="button-client bg-[#F17732] hover:bg-[#f7813c]">
-            Read More
+            <Link to="about">{t("body.readMore")}</Link>
           </button>
         </div>
         <div className="basis-2/5 animate-updown-slow">

@@ -36,7 +36,7 @@ const SignInForm = ({ pos }) => {
           type="text"
           name="email"
           id="email"
-          placeholder="Your email"
+          placeholder="Email"
           className="input-field"
         />
         <HiOutlineMail className="icon-login" />
@@ -46,7 +46,7 @@ const SignInForm = ({ pos }) => {
           type="password"
           name="password"
           id="password"
-          placeholder="Your password"
+          placeholder="Mật khẩu"
           className="input-field"
         />
         <VscLockSmall className="icon-login" />
@@ -54,19 +54,19 @@ const SignInForm = ({ pos }) => {
       <label htmlFor="role" className="relative">
         <select name="role" id="role" className="input-field">
           <option value="" disabled selected hidden>
-            Your role
+            Vai trò
           </option>
-          <option value="Doctor">Doctor</option>
-          <option value="Patient">Patient</option>
+          <option value="Doctor">Bác sĩ</option>
+          <option value="Patient">Bệnh nhân</option>
         </select>
         <BiUserPin className="icon-login" />
       </label>
       <label htmlFor="remember">
         <input type="checkbox" name="remember" id="remember" />{" "}
-        <span>Remember Password</span>
+        <span>Nhớ mật khẩu</span>
       </label>
       <button className="submit-btn" disabled={isLoading}>
-        Log In
+        Đăng nhập
       </button>
     </form>
   );

@@ -3,6 +3,7 @@ import PatientCard from "../PatientCard";
 import { useAppContext } from "../../context/appContext";
 import { useEffect, useState } from "react";
 import DetailPatient from "../DetailPatient";
+import MoreDetailModal from "../MoreDetailModal.jsx";
 
 const online = [
   "now",
@@ -21,11 +22,12 @@ const online = [
 const PatientContainer = () => {
   const { getAllPatients, myPatients, isLoading, page } = useAppContext();
   const [openModal, setOpenModal] = useState(false);
+  const [openMoreModal, setOpenMoreModal] = useState(false);
   const [info, setInfo] = useState({});
-  console.log(info);
+
   const handleClick = (id) => {
     const patient = myPatients.find((el) => el._id === id);
-    setInfo({ ...setInfo, patient });
+    setInfo({ ...info, patient });
     setOpenModal(true);
   };
 
@@ -47,7 +49,7 @@ const PatientContainer = () => {
       </div>
     );
   }
-
+  console.log("myPatients", myPatients);
   return (
     <>
       <div className="mt-16 mb-10 flex w-full  flex-col items-center justify-center">
@@ -66,6 +68,7 @@ const PatientContainer = () => {
                 detail={el.detail}
                 id={el._id}
                 handleClick={handleClick}
+                setOpenMoreModal={setOpenMoreModal}
               />
             ))
           )}
@@ -73,6 +76,12 @@ const PatientContainer = () => {
       </div>
       {openModal && (
         <DetailPatient setOpenModal={setOpenModal} info={info.patient} />
+      )}
+      {openMoreModal && (
+        <MoreDetailModal
+          setOpenModal={setOpenMoreModal}
+          patient={info?.patient?.firstName ?? ""}
+        />
       )}
     </>
   );

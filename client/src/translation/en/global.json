@@ -1,0 +1,56 @@
+{
+  "header": {
+    "home": "Home",
+    "pages": "Pages",
+    "doctors": "Doctors",
+    "blog": "Blogs",
+    "profile": "My Profile",
+    "logout": "LOGOUT"
+  },
+  "body": {
+    "chatbot": {
+      "title": "Hello, I am your assistant. Tell me about your health"
+    },
+    "provide": "Connect to your doctors",
+    "title": "Protect Your Health And Take Care To Of Your Health",
+    "readMore": "Read More",
+    "aboutUs": "About Us",
+    "connect": "The Great Place to Connect to your doctors.",
+    "des": "We provide special tips and advice for health care treatment and the high level of the best technology on our platform.",
+    "more": {
+      "em": "Emergency Help",
+      "qua": "Qualified Doctors",
+      "me": "Medical Treatment",
+      "best": "Best Professionals",
+      "years": "Years Experience",
+      "more": "Read More"
+    },
+    "work": {
+      "title": "Working Process",
+      "sub": "How We Work",
+      "1": "Connect Doctors",
+      "2": "Track health",
+      "3": "Take Appointment",
+      "sub1": "By connecting doctors, this initiative aims to enhance collaboration, promote innovation, and ultimately.",
+      "sub2": "By tracking health, individuals can gain insights into their body's functioning, identify potential health.",
+      "sub3": "scheduling or booking a specific time and date to meet with a healthcare provider or  professional"
+    },
+    "evaluate": {
+      "title": "Testimonial",
+      "sub": "See What Are Patients Saying About us"
+    },
+    "blog": {
+      "title": "Latest Blogs",
+      "sub": "Our Latest Blogs"
+    },
+    "drop": {
+      "about": "About Us",
+      "booking": "Booking",
+      "faq": "FAQ's"
+    },
+    "doctors": {
+      "title": "Our Doctors",
+      "sub": "Meet Best Doctors"
+    }
+  }
+}

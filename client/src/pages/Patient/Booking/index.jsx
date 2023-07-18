@@ -3,7 +3,7 @@ const Booking = () => {
     <div className="m-auto my-20 flex h-screen w-11/12 items-center justify-around rounded-[40px] bg-[#f5f5fc] bg-[url('../../../../src/assets/mobile-background.png')] bg-center bg-no-repeat tracking-wide">
       <form className="flex h-fit w-fit basis-1/4 flex-col gap-10 rounded-3xl bg-white py-10 px-8">
         <h2 className="text-center text-2xl font-bold text-[#1F2278]">
-          Book Appointment
+          Đặt lịch khám
         </h2>
         <select
           name="department"

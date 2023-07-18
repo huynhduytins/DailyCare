@@ -34,7 +34,11 @@ const StatItem = ({ num, text, icon }) => {
         </span>
       </header>
       <h5 className="m-0 mt-4 text-left text-xl capitalize tracking-wider">
-        {text}
+        {text === "Urgent Patient"
+          ? "Bệnh nhân khẩn cấp"
+          : text === "Pending Patients"
+          ? "Yêu cầu kết nối"
+          : "Lịch Khám"}
       </h5>
     </article>
   );

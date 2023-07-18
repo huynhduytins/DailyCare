@@ -1,0 +1,52 @@
+{
+  "header": {
+    "home": "Trang chủ",
+    "pages": "Điều hướng",
+    "doctors": "Bác sĩ",
+    "blog": "Bài viết",
+    "profile": "Hồ sơ của tôi",
+    "logout": "Đăng xuất"
+  },
+  "body": {
+    "chatbot": {
+      "title": "Tôi là trợ lý sức khỏe của bạn. Hãy cho tôi biết tình trạng sức khỏe hiện tại của bạn"
+    },
+    "provide": "Kết nối với bác sĩ của bạn",
+    "title": "Bảo vệ và chăm sóc sức khỏe của bạn",
+    "readMore": "Chi tiết",
+    "aboutUs": "Về chúng tôi",
+    "connect": "Nơi tuyệt vời để kết nối với bác sĩ của bạn.",
+    "des": "Chúng tôi cung cấp các lời khuyên và lời khuyên đặc biệt về điều trị chăm sóc sức khỏe và mức độ cao của công nghệ tốt nhất trên nền tảng của chúng tôi.",
+    "more": {
+      "em": "Trợ giúp khẩn cấp",
+      "qua": "Bác sĩ chất lượng",
+      "me": "Điều trị y tế",
+      "best": "Chuyên gia hàng đầu",
+      "years": "Năm kinh nghiệm",
+      "more": "Chi tiết"
+    },
+    "work": {
+      "title": "Qui trình",
+      "sub": "Cách hoạt động",
+      "1": "Kết nối bác sĩ",
+      "2": "Theo dõi sức khỏe",
+      "3": "Tạo cuộc hẹn",
+      "sub1": "Bằng cách kết nối các bác sĩ, sáng kiến ​​này nhằm mục đích tăng cường hợp tác.",
+      "sub2": "Bằng cách theo dõi sức khỏe, các cá nhân có thể hiểu rõ hơn về hoạt động cơ thể.",
+      "sub3": "lên lịch hoặc đặt trước ngày giờ cụ thể để gặp nhà cung cấp dịch vụ chăm sóc"
+    },
+    "evaluate": {
+      "title": "Đánh giá",
+      "sub": "Người dùng đánh giá về chúng tôi"
+    },
+    "blog": {
+      "title": "Bài viết mới nhất",
+      "sub": "Bài viết mới nhất của chúng tôi"
+    },
+    "drop": {
+      "about": "Về chúng tôi",
+      "booking": "Đặt lịch",
+      "faq": "FAQ's"
+    }
+  }
+}

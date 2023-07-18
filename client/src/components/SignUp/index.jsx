@@ -44,7 +44,7 @@ const SignUpForm = ({ pos }) => {
           type="text"
           name="emailU"
           id="emailU"
-          placeholder="Enter your email"
+          placeholder="Email"
           className="input-field"
         />
         <HiOutlineMail className="icon-login" />
@@ -54,7 +54,7 @@ const SignUpForm = ({ pos }) => {
           type="text"
           name="usernameU"
           id="usernameU"
-          placeholder="Enter Username"
+          placeholder="Tên"
           className="input-field"
         />
         <BiUser className="icon-login" />
@@ -64,7 +64,7 @@ const SignUpForm = ({ pos }) => {
           type="password"
           name="passwordU"
           id="passwordU"
-          placeholder="Enter Password"
+          placeholder="Mật khẩu"
           className="input-field"
         />
         <VscLockSmall className="icon-login" />
@@ -72,10 +72,10 @@ const SignUpForm = ({ pos }) => {
       <label htmlFor="roleU" className="relative">
         <select name="roleU" id="roleU" className="input-field">
           <option value="" disabled selected hidden>
-            Select your role
+            Vai trò
           </option>
-          <option value="Doctor">Doctor</option>
-          <option value="Patient">Patient</option>
+          <option value="Doctor">Bác sĩ</option>
+          <option value="Patient">Bệnh nhân</option>
         </select>
         <BiUserPin className="icon-login" />
       </label>
@@ -86,10 +86,10 @@ const SignUpForm = ({ pos }) => {
           id="rememberU"
           className="bg-green-600 font-[12px]"
         />{" "}
-        <span>I agree to the terms of service</span>
+        <span>Tôi đồng ý với điều khoản</span>
       </label>
       <button className="submit-btn" disabled={isLoading}>
-        Create An Account
+        Tạo tài khoản
       </button>
     </form>
   );

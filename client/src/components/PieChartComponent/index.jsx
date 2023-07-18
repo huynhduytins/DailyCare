@@ -33,14 +33,14 @@ const PieChartComponent = () => {
   const { stats } = useAppContext();
 
   const data = [
-    { name: "age(0-22)", value: stats.data ? stats.data["0-22"] : 0 },
+    { name: "age(0-22)", value: stats.data ? stats.data["0-22"] : 100 },
     { name: "age(23-35)", value: stats.data ? stats.data["23-35"] : 0 },
     { name: "age(36-60)", value: stats.data ? stats.data["36-60"] : 0 },
     { name: "age(>60)", value: stats.data ? stats.data[">60"] : 0 },
   ];
 
   return (
-    <div className="flex h-[300px] w-full items-center justify-center gap-8">
+    <div className="z-0 flex h-[300px] w-full items-center justify-center gap-8">
       <ResponsiveContainer width={160} height={160}>
         <PieChart>
           <Tooltip />

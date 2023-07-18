@@ -54,7 +54,7 @@ const AddPatient = () => {
     <>
       <div className="mb-9">
         <Form
-          title="Add New Patient"
+          title="Thêm Bệnh Nhân"
           handleSubmit={handleSubmit}
           button="Submit"
           showAlert={showAlert}
@@ -63,7 +63,7 @@ const AddPatient = () => {
           <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
             <InputForm
               type="name"
-              name="Name"
+              name="Tên"
               value=""
               submit={submit}
               setSubmit={setSubmit}
@@ -80,14 +80,14 @@ const AddPatient = () => {
           <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
             <InputForm
               type="age"
-              name="Age"
+              name="Tuổi"
               value=""
               submit={submit}
               setSubmit={setSubmit}
             />
             <InputForm
               type="gender"
-              name="Gender"
+              name="Giới tính"
               value=""
               submit={submit}
               setSubmit={setSubmit}
@@ -96,7 +96,7 @@ const AddPatient = () => {
           <hr className="mt-10" />
           <div className=" mt-8">
             <label htmlFor="detail" className="mb-5 block">
-              Detail about the patient's health
+              Chi tiết về sức khỏe bệnh nhân
             </label>
             <textarea
               name="detail"

@@ -7,7 +7,7 @@ const WaitingComponent = () => {
   return (
     <div className="mb-10 flex w-full flex-col items-center justify-center">
       <h2 className="my-10 w-10/12 text-xl font-bold">
-        Pending Patients: <span>{waitingList.length}</span>
+        Bệnh nhân yêu cầu kết nối: <span>{waitingList.length}</span>
       </h2>
       <div className="grid w-10/12 grid-cols-1 gap-5 lg:grid-cols-2">
         {waitingList.map((el) => (

@@ -6,6 +6,7 @@ import thirdImg from "../../../../src/assets/news-3.jpg";
 import subFirst from "../../../../src/assets/evaluate-1.jpg";
 import subSecond from "../../../../src/assets/evaluate-2.jpg";
 import subThird from "../../../../src/assets/evaluate-3.jpg";
+import { useTranslation } from "react-i18next";
 
 const articles = [
   {
@@ -32,13 +33,15 @@ const articles = [
 ];
 
 const News = () => {
+  const [t] = useTranslation("global");
+
   return (
     <div className="h-screen">
       <h3 className="m-auto w-fit bg-[url('../../../../src/assets/bg-about.png')] px-3 font-bold text-[#F17732]">
-        Latest News
+        {t("body.blog.title")}
       </h3>
       <h2 className="m-auto mt-10 w-2/5 text-center text-4xl font-bold text-[#1F2278]">
-        Our Latest News
+        {t("body.blog.sub")}
       </h2>
       <div className="m-auto mt-20 flex w-5/6 justify-center gap-10 overflow-hidden">
         {articles.map((article) => (

@@ -3,6 +3,7 @@ import Evaluate from "../Evaluate";
 import Card from "./Card";
 import DoctorCard from "./DoctorCard";
 import News from "../News";
+import { useTranslation } from "react-i18next";
 
 const details = [
   {
@@ -46,10 +47,12 @@ const doctors = [
 ];
 
 const AboutUs = () => {
+  const [t] = useTranslation("global");
+
   return (
     <main>
       <h2 className="mt-52 text-center text-7xl font-bold text-[#1f2278]">
-        About Us
+        {t("body.aboutUs")}
       </h2>
       <About />
       <section className="-z-20 flex justify-center gap-20 bg-slate-100 py-[100px] px-32">
@@ -59,12 +62,12 @@ const AboutUs = () => {
           );
         })}
       </section>
-      <section className="flex h-screen flex-col items-center">
+      <section className="mb-24 flex h-screen flex-col items-center">
         <p className="mt-32 w-fit bg-[url('../../../../src/assets/bg-about.png')] px-2 font-bold text-[#f17732]">
-          Our Doctor
+          {t("body.doctors.title")}
         </p>
         <h2 className="mt-10 text-4xl font-bold text-[#1f2278]">
-          Meet Best Doctors
+          {t("body.doctors.sub")}
         </h2>
         <div className="mt-24 flex gap-28">
           {doctors.map((doctor) => {

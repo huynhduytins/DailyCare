@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login";
 
-import PatientProfile from "./pages/Patient/PatientProfile";
 import AllDoctors from "./pages/Patient/AllDoctors";
 import PatientPage from "./pages/Patient/PatientPage";
 
@@ -16,6 +15,8 @@ import {
 import PatientSharedLayout from "./pages/Patient/PatientSharedLayout";
 import AboutUs from "./pages/Patient/AboutUs";
 import FAQ from "./pages/Patient/FAQ";
+import PatientProfile from "./pages/Patient/Profile";
+import CreateBooking from "./pages/Patient/CreateBooking";
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
           <Route index element={<PatientPage />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="faq" element={<FAQ />} />
+          <Route path="doctors" element={<AllDoctors />} />
+          <Route path="profile" element={<PatientProfile />} />
+          <Route path="booking" element={<CreateBooking />} />
         </Route>
       </Routes>
     </BrowserRouter>

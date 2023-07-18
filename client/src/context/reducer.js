@@ -21,6 +21,7 @@ import {
   CHANGE_PAGE,
   CHANGE_PARAM,
   CHANGE_ACTIVE,
+  CHANGE_APPOINTMENT,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -212,6 +213,21 @@ const reducer = (state, action) => {
     return {
       ...state,
       linkActive: action.payload.active,
+    };
+  }
+
+  if (action.type === CHANGE_APPOINTMENT) {
+    const id = action.payload.initApp.findIndex(
+      (el) => el.name === action.payload.app
+    );
+    const newApp = [
+      ...state.appointment.slice(0, id),
+      ...state.appointment.slice(id + 1),
+    ];
+    return {
+      ...state,
+      appointment: newApp,
+      scheduler: newApp.length,
     };
   }
 };

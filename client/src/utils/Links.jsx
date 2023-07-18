@@ -4,20 +4,20 @@ import { FaWpforms } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 
 const Links = [
-  { id: 1, text: "stats", path: "/admin", icon: <IoBarChartSharp /> },
+  { id: 1, text: "Thống kê", path: "/admin", icon: <IoBarChartSharp /> },
   {
     id: 2,
-    text: "all patients",
+    text: "Tất cả bệnh nhân",
     path: "all-patients",
     icon: <MdQueryStats />,
   },
   {
     id: 3,
-    text: "add patient",
+    text: "Thêm bệnh nhân",
     path: "add-patient",
     icon: <FaWpforms />,
   },
-  { id: 4, text: "profile", path: "profile", icon: <ImProfile /> },
+  { id: 4, text: "Hồ sơ", path: "profile", icon: <ImProfile /> },
 ];
 
 export default Links;

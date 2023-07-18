@@ -13,6 +13,7 @@ const PatientCard = ({
   detail,
   id,
   handleClick,
+  setOpenMoreModal,
 }) => {
   const { deleteMyPatient } = useAppContext();
 
@@ -27,7 +28,9 @@ const PatientCard = ({
             <h2 className="uppercase">{fullName[0]}</h2>
           </div>
           <div>
-            <h5 className="mb-1 font-bold">{fullName}</h5>
+            <h5 className="mb-1 font-bold">{`${fullName.split("-")[0]} ${
+              fullName.split("-")[1]
+            }`}</h5>
             <div
               className={`flex items-center gap-1  ${
                 online === "now" ? "text-green-400" : "text-gray-500"
@@ -67,6 +70,12 @@ const PatientCard = ({
         <h2 className="font-bold text-gray-500">{detail ?? "No Detail"}</h2>
       </div>
       <div className="mb-3 flex w-full justify-end">
+        <button
+          className="mr-7 rounded-md bg-green-100 py-[6px] px-3 shadow-md hover:shadow-lg"
+          onClick={() => setOpenMoreModal(true)}
+        >
+          Prescription
+        </button>
         <button
           className="mr-7 rounded-md bg-red-100 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => deleteMyPatient(id)}

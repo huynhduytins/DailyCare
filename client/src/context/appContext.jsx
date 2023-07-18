@@ -22,6 +22,7 @@ import {
   CHANGE_PAGE,
   CHANGE_PARAM,
   CHANGE_ACTIVE,
+  CHANGE_APPOINTMENT,
 } from "./actions";
 import axios from "axios";
 
@@ -66,6 +67,27 @@ const initialSate = {
 
   // CACHING
   localCache: {},
+
+  // Appointment
+  appointment: [
+    {
+      name: "Adam",
+      date: {
+        when: "Tomorrow",
+        day: "Thu, 02/07/2023",
+        hour: "11:30 AM",
+      },
+    },
+    {
+      name: "Ema",
+      date: {
+        when: "Tomorrow",
+        day: "Thu, 02/07/2023",
+        hour: "15:30 AM",
+      },
+    },
+  ],
+  scheduler: 2,
 };
 
 const AppContext = React.createContext();
@@ -208,30 +230,30 @@ const AppProvider = ({ children }) => {
     const queryString = `${state.page}-${search}-${levelDis}-${gender}-${sort}`;
 
     try {
-      if (state.localCache[queryString]) {
-        const { myPatients, totalPatients, numberOfPatientPages } =
-          state.localCache[queryString];
-        dispatch({
-          type: GET_MY_PATIENTS_SUCCESS,
-          payload: {
-            myPatients,
-            totalPatients,
-            numberOfPatientPages,
-          },
-        });
-      } else {
-        const { data } = await authFetch.get(url);
-        const { myPatients, totalPatients, numberOfPatientPages } = data;
-        state.localCache[queryString] = data;
-        dispatch({
-          type: GET_MY_PATIENTS_SUCCESS,
-          payload: {
-            myPatients,
-            totalPatients,
-            numberOfPatientPages,
-          },
-        });
-      }
+      // if (state.localCache[queryString]) {
+      //   const { myPatients, totalPatients, numberOfPatientPages } =
+      //     state.localCache[queryString];
+      //   dispatch({
+      //     type: GET_MY_PATIENTS_SUCCESS,
+      //     payload: {
+      //       myPatients,
+      //       totalPatients,
+      //       numberOfPatientPages,
+      //     },
+      //   });
+      // } else {
+      const { data } = await authFetch.get(url);
+      const { myPatients, totalPatients, numberOfPatientPages } = data;
+      state.localCache[queryString] = data;
+      dispatch({
+        type: GET_MY_PATIENTS_SUCCESS,
+        payload: {
+          myPatients,
+          totalPatients,
+          numberOfPatientPages,
+        },
+      });
+      // }
     } catch (error) {
       console.log(error.response);
     }
@@ -286,6 +308,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CHANGE_ACTIVE, payload: { active } });
   };
 
+  const changeAppointment = (initApp, app) => {
+    dispatch({ type: CHANGE_APPOINTMENT, payload: { initApp, app } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -304,6 +330,7 @@ const AppProvider = ({ children }) => {
         changePage,
         changeParams,
         changeActive,
+        changeAppointment,
       }}
     >
       {children}

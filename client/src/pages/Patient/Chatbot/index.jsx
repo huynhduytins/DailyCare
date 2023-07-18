@@ -8,9 +8,9 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 import { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
@@ -19,8 +19,12 @@ const systemMessage = {
 };
 
 const Chatbot = () => {
+  const [t] = useTranslation("global");
   const [messages, setMessages] = useState([
-    { message: "Hello, I am ChatGPT!", sender: "ChatGPT" },
+    {
+      message: t("body.chatbot.title"),
+      sender: "ChatGPT",
+    },
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [openChat, setOpenChat] = useState(false);
@@ -94,7 +98,7 @@ const Chatbot = () => {
               scrollBehavior="smooth"
               typingIndicator={
                 isTyping ? (
-                  <TypingIndicator content="ChatGPT is typing" />
+                  <TypingIndicator content="Assistant is typing" />
                 ) : null
               }
             >

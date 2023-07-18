@@ -1,11 +1,12 @@
 import { FaTimes } from "react-icons/fa";
 import Modal from "../Modal";
 import Detail from "./Detail";
+import LineChartPatient from "../LineChart";
 
 const DetailPatient = ({ setOpenModal, info }) => {
   return (
     <Modal>
-      <div className="relative h-[85vh] w-[45vw] rounded-lg bg-white py-16 px-8">
+      <div className="relative h-[85vh] w-[900px] overflow-auto rounded-lg bg-white py-16 px-8">
         <button
           className="absolute top-4 left-4 border-transparent bg-transparent text-2xl text-red-900"
           onClick={() => setOpenModal(false)}
@@ -21,6 +22,7 @@ const DetailPatient = ({ setOpenModal, info }) => {
           </div>
         </div>
         <Detail info={info} />
+        <LineChartPatient />
       </div>
     </Modal>
   );

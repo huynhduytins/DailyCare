@@ -17,7 +17,7 @@ const Navbar = () => {
       </button>
       <div>
         <img src={logo} alt="" className="hidden" />
-        <h3 className="hidden text-3xl md:block">Dashboard</h3>
+        <h3 className="hidden text-3xl md:block">Bảng Điều Khiển</h3>
       </div>
       <div className="relative font-bold">
         <button

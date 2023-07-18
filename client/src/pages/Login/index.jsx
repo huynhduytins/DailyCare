@@ -18,7 +18,7 @@ const Login = () => {
   };
 
   const handleSignUpForm = () => {
-    setPos({ btn: 111, login: -400, signUp: 50 });
+    setPos({ btn: 130, login: -400, signUp: 50 });
     setTypeForm("SignUp");
   };
 

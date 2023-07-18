@@ -17,7 +17,7 @@ const LeftSide = ({ pos, typeForm, handleLoginForm, handleSignUpForm }) => {
       <div className="relative mt-16 h-[575px] w-[380px] overflow-hidden">
         <div className="relative  mx-auto mb-9  w-fit rounded-[30px] font-semibold shadow-2xl">
           <div
-            className={`m-x[35px] absolute top-0 my-auto h-full w-[110px] rounded-[30px] bg-green-600`}
+            className={`m-x[35px] absolute top-0 my-auto h-full w-[140px] rounded-[30px] bg-green-600`}
             style={{ transition: ".5s", left: `${pos.btn}px` }}
           ></div>
           <button
@@ -26,7 +26,7 @@ const LeftSide = ({ pos, typeForm, handleLoginForm, handleSignUpForm }) => {
             style={{ transition: ".5s" }}
             onClick={handleLoginForm}
           >
-            Log In
+            Đăng nhập
           </button>
           <button
             type="button"
@@ -34,7 +34,7 @@ const LeftSide = ({ pos, typeForm, handleLoginForm, handleSignUpForm }) => {
             style={{ transition: ".5s" }}
             onClick={handleSignUpForm}
           >
-            Sign Up
+            Đăng ký
           </button>
         </div>
         <div className="flex items-center justify-center gap-5">
