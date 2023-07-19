@@ -4,5 +4,14 @@ import PatientList from "./PatientList";
 import Profile from "./Profile";
 import SharedLayout from "./SharedLayout";
 import ProtectedRoute from "./ProtectedRoute";
+import Message from "./Message";
 
-export { SharedLayout, AddPatient, PatientList, Stat, Profile, ProtectedRoute };
+export {
+  SharedLayout,
+  AddPatient,
+  PatientList,
+  Stat,
+  Profile,
+  ProtectedRoute,
+  Message,
+};

@@ -11,6 +11,7 @@ import {
   Profile,
   SharedLayout,
   ProtectedRoute,
+  Message,
 } from "./pages/Dashboard";
 import PatientSharedLayout from "./pages/Patient/PatientSharedLayout";
 import AboutUs from "./pages/Patient/AboutUs";
@@ -34,6 +35,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="add-patient" element={<AddPatient />} />
           <Route path="all-patients" element={<PatientList />} />
+          <Route path="message" element={<Message />} />
         </Route>
         <Route path="/" element={<Login />} />
 

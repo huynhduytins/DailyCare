@@ -18,6 +18,7 @@ const Links = [
     icon: <FaWpforms />,
   },
   { id: 4, text: "Hồ sơ", path: "profile", icon: <ImProfile /> },
+  { id: 5, text: "Message", path: "message", icon: <ImProfile /> },
 ];
 
 export default Links;
