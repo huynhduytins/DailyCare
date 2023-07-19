@@ -25,8 +25,8 @@ router.route("/delete/:id").delete(deletePatient);
 router.route("/decline/:id").delete(declinePatient);
 router.route("/accept/:id").delete(acceptPatient);
 
-// chat
-router.route("/group").post(createGroupChat);
-router.route("/rename").put(createGroupChat);
+// // chat
+// router.route("/group").post(createGroupChat);
+// router.route("/rename").put(createGroupChat);
 
 export default router;
