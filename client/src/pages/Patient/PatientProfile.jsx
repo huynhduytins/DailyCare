@@ -2,6 +2,8 @@ import Form from "../Dashboard/Form";
 import InputForm from "../../components/InputForm";
 
 const PatientProfile = () => {
+  const [t] = useTranslation("global");
+
   const handleSubmit = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -18,7 +20,11 @@ const PatientProfile = () => {
 
   return (
     <div className="mt-0 w-2/3">
-      <Form title="Profile" handleSubmit={handleSubmit} button="Submit">
+      <Form
+        title={`${t("body.profile.title")}`}
+        handleSubmit={handleSubmit}
+        button="Submit"
+      >
         <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
           <InputForm type="firstName" name="First Name" value="" />
           <InputForm type="lastName" name="Last Name" value="" />

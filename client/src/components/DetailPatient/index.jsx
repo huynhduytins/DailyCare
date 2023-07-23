@@ -95,7 +95,7 @@ const DetailPatient = ({ setOpenModal, info }) => {
             <LineChartPatient />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1} className="overflow-hidden">
-            <Message />
+            <Message info={info} />
           </CustomTabPanel>
         </Box>
       </div>

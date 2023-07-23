@@ -56,3 +56,71 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+#new-chat-plus-button {
+  background: #1eff7c !important;
+}
+
+#new-chat-plus-button span svg {
+  margin-bottom: 7px;
+}
+
+.ce-chat-engine div {
+  font-family: "open sans", Courier, monospace;
+  font-weight: 500;
+}
+
+#ce-delete-chat-button svg {
+  margin-bottom: 6px;
+  margin-right: 5px;
+}
+
+#ce-ice-breaker-gif {
+  display: none;
+}
+
+.ce-chat-form-container div div div {
+  visibility: hidden;
+}
+
+.ce-chat-form-container div div div::after {
+  content: "Nhóm trò chuyện";
+  position: absolute;
+  left: 8px;
+  top: -2px;
+  visibility: visible;
+  font-weight: bold;
+}
+
+.ce-person-title-container div {
+  visibility: hidden;
+}
+
+.ce-person-title-container div::after {
+  content: "Thành viên";
+  visibility: visible;
+  position: absolute;
+  left: 35px;
+}
+
+.ce-photo-title-container div {
+  visibility: hidden;
+}
+
+.ce-photo-title-container div::after {
+  content: "Hình ảnh";
+  visibility: visible;
+  position: absolute;
+  left: 35px;
+}
+
+#ce-options-drop-down div {
+  visibility: hidden;
+}
+
+#ce-options-drop-down div::after {
+  content: "Tùy chọn";
+  visibility: visible;
+  position: absolute;
+  left: 35px;
+}

@@ -21,7 +21,6 @@ const PatientSharedLayout = () => {
     <div>
       <NavbarPatient changeScroll={changeScroll} />
       <Outlet />
-      <Chatbot />
       <Footer />
     </div>
   );

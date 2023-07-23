@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Drop from "./Drop";
 import News from "../News";
+import Chatbot from "../Chatbot";
 
 const questions = [
   {
@@ -103,6 +104,7 @@ const FAQ = () => {
         </div>
       </div>
       <News />
+      <Chatbot />
     </main>
   );
 };

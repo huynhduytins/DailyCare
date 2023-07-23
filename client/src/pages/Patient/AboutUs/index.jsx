@@ -4,6 +4,7 @@ import Card from "./Card";
 import DoctorCard from "./DoctorCard";
 import News from "../News";
 import { useTranslation } from "react-i18next";
+import Chatbot from "../Chatbot";
 
 const details = [
   {
@@ -83,6 +84,7 @@ const AboutUs = () => {
       </section>
       <Evaluate />
       <News />
+      <Chatbot />
     </main>
   );
 };

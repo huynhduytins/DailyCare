@@ -41,7 +41,7 @@ const NavbarPatient = (props) => {
               className="w-56"
             />
           </div>
-          <ul className="hidden basis-2/5 justify-between md:flex">
+          <ul className="hidden basis-3/6 justify-between md:flex">
             <li>
               <Link
                 to="/user"
@@ -84,6 +84,14 @@ const NavbarPatient = (props) => {
                 className="inline-block py-7 px-3 hover:text-[#F17732]"
               >
                 {t("header.profile")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="message"
+                className="inline-block py-7 px-3 hover:text-[#F17732]"
+              >
+                {t("header.mess")}
               </Link>
             </li>
           </ul>

@@ -5,6 +5,7 @@
     "doctors": "Doctors",
     "blog": "Blogs",
     "profile": "My Profile",
+    "mess": "Message",
     "logout": "LOGOUT"
   },
   "body": {
@@ -51,6 +52,27 @@
     "doctors": {
       "title": "Our Doctors",
       "sub": "Meet Best Doctors"
+    },
+    "profile": {
+      "title": "Profile",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "age": "Age",
+      "gender": "Gender",
+      "address": "Address",
+      "detail": "Detail about the patient's health"
+    },
+    "medicalRecord": {
+      "title": "Medical Record",
+      "medHis": "Medical History",
+      "bloodPress": "Blood Pressure (mmHg)",
+      "heartRate": "Heart Rate (bpm)",
+      "weight": "Weight (kg)",
+      "height": "Height (cm)"
+    },
+    "medicalDairy": {
+      "title": "Health Dairy",
+      "note": "Note"
     }
   }
 }

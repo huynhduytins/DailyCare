@@ -17,7 +17,7 @@ const Navbar = () => {
       </button>
       <div>
         <img src={logo} alt="" className="hidden" />
-        <h3 className="hidden text-3xl md:block">Bảng Điều Khiển</h3>
+        <h3 className="invisible hidden text-3xl md:block">Bảng Điều Khiển</h3>
       </div>
       <div className="relative font-bold">
         <button
@@ -33,7 +33,7 @@ const Navbar = () => {
             className=" absolute top-10 left-0 w-full cursor-pointer rounded-md bg-green-500 p-2 text-center text-white hover:bg-green-400"
             onClick={logoutUser}
           >
-            <button className="bg-transparent">logout</button>
+            <button className="z-50 bg-transparent">Đăng xuất</button>
           </div>
         )}
       </div>

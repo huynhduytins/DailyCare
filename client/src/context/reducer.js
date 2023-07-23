@@ -22,6 +22,8 @@ import {
   CHANGE_PARAM,
   CHANGE_ACTIVE,
   CHANGE_APPOINTMENT,
+  CHANGE_LIKE_ARTICLE,
+  DETAIL_ARTICLE,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -228,6 +230,53 @@ const reducer = (state, action) => {
       ...state,
       appointment: newApp,
       scheduler: newApp.length,
+    };
+  }
+
+  if (action.type === CHANGE_LIKE_ARTICLE) {
+    let art;
+    const newArticle = state.articles;
+
+    if (action.payload.like) {
+      art = newArticle.myFavorite.findIndex(
+        (el) => el.title === action.payload.article
+      );
+      const newArt = newArticle.myFavorite[art];
+      newArt.like = false;
+      newArticle.myFavorite = [
+        ...newArticle.myFavorite.slice(0, art),
+        ...newArticle.myFavorite.slice(art + 1),
+      ];
+      newArticle.allArticles.push(newArt);
+    } else {
+      art = newArticle.allArticles.findIndex(
+        (el) => el.title === action.payload.article
+      );
+      const newArt = newArticle.allArticles[art];
+      newArt.like = true;
+      newArticle.allArticles = [
+        ...newArticle.allArticles.slice(0, art),
+        ...newArticle.allArticles.slice(art + 1),
+      ];
+      newArticle.myFavorite.push(newArt);
+    }
+    return {
+      ...state,
+    };
+  }
+
+  if (action.type === DETAIL_ARTICLE) {
+    const detail =
+      state.articles.myFavorite.find(
+        (el) => el.title === action.payload.title
+      ) ||
+      state.articles.allArticles.find(
+        (el) => el.title === action.payload.title
+      );
+    console.log(detail);
+    return {
+      ...state,
+      detail: detail,
     };
   }
 };

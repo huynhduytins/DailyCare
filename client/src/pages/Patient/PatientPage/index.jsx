@@ -5,6 +5,7 @@ import Booking from "../Booking";
 import Evaluate from "../Evaluate";
 import News from "../News";
 import Hero from "../Hero/inex";
+import Chatbot from "../Chatbot";
 
 const PatientPage = () => {
   return (
@@ -15,6 +16,7 @@ const PatientPage = () => {
       <Booking />
       <Evaluate />
       <News />
+      <Chatbot />
     </>
   );
 };

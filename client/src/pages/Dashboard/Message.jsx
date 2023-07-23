@@ -1,72 +1,39 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { ChatEngine } from "react-chat-engine";
+import { useEffect } from "react";
+import axios from "axios";
+import { useAppContext } from "../../context/appContext";
 
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-CustomTabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-export default function Message() {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+export default function MyMessage() {
+  const { email } = useAppContext();
+  useEffect(() => {
+    axios
+      .get("https://api.chatengine.io/users/me", {
+        headers: {
+          "project-id": "40cdb4b5-8ef7-439d-9f13-a0fb2a40ab9c",
+          "user-name": email,
+          "user-secret": email,
+        },
+      })
+      .then((r) => console.log(r))
+      .catch(() => {
+        let formData = new FormData();
+        formData.append("username", email);
+        formData.append("secret", email);
+        axios
+          .post("https://api.chatengine.io/users/", formData, {
+            headers: { "PRIVATE-KEY": "ccd44c80-6199-44dc-b264-0cb3b088a0ed" },
+          })
+          .then((r) => console.log(r))
+          .catch((err) => console.log(err));
+      });
+  }, []);
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <CustomTabPanel value={value} index={0}>
-        Item One
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel>
-    </Box>
+    <ChatEngine
+      height="calc(86vh)"
+      projectID="40cdb4b5-8ef7-439d-9f13-a0fb2a40ab9c"
+      userName={email}
+      userSecret={email}
+    />
   );
 }

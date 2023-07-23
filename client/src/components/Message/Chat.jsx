@@ -1,4 +1,4 @@
-const Chat = ({ owner }) => {
+const Chat = ({ owner, content }) => {
   return (
     <div className={`flex items-end gap-3 ${owner ? "flex-row-reverse" : ""}`}>
       {!owner && (
@@ -13,12 +13,7 @@ const Chat = ({ owner }) => {
             : "bg-green-200 text-slate-500"
         } px-3 py-1 font-bold`}
       >
-        <p>
-          hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi
-          hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi
-          hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihi hihihihi hihi
-          hihi hihi hihi
-        </p>
+        <p>{content}</p>
       </div>
     </div>
   );

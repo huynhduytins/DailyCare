@@ -6,8 +6,12 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useEffect, useRef, useState } from "react";
 import { BsCheckLg } from "react-icons/bs";
 import { MdDeleteForever } from "react-icons/md";
+import { useTranslation } from "react-i18next";
+import Chatbot from "../Chatbot";
 
 const PatientProfile = () => {
+  const [t] = useTranslation("global");
+
   const [actives, setActives] = useState([
     { title: "Uống 3 lít nước mỗi ngày", checked: true },
     { title: "Tập thể dục", checked: true },
@@ -65,25 +69,41 @@ const PatientProfile = () => {
   return (
     <div className="my-40 w-full">
       <Form
-        title="Profile"
+        title={`${t("body.profile.title")}`}
         handleSubmit={handleSubmit}
         button="Save"
         client={true}
       >
         <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
-          <InputForm type="firstName" name="First Name" value="" />
-          <InputForm type="lastName" name="Last Name" value="" />
+          <InputForm
+            type="firstName"
+            name={`${t("body.profile.firstName")}`}
+            value=""
+          />
+          <InputForm
+            type="lastName"
+            name={`${t("body.profile.lastName")}`}
+            value=""
+          />
         </div>
         <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
-          <InputForm type="age" name="Age" value="" />
-          <InputForm type="gender" name="Gender" value="" />
+          <InputForm type="age" name={`${t("body.profile.age")}`} value="" />
+          <InputForm
+            type="gender"
+            name={`${t("body.profile.gender")}`}
+            value=""
+          />
         </div>
         <div className="mt-8">
-          <InputForm type="address" name="Address" value="" />
+          <InputForm
+            type="address"
+            name={`${t("body.profile.address")}`}
+            value=""
+          />
         </div>
         <div className=" mt-8">
           <label htmlFor="detail" className="mb-5 block">
-            Detail about the patient's health
+            {`${t("body.profile.detail")}`}
           </label>
           <textarea
             name="detail"
@@ -92,25 +112,45 @@ const PatientProfile = () => {
           ></textarea>
         </div>
         <div>
-          <h3 className="mt-16 text-3xl">Medical Record</h3>
+          <h3 className="mt-16 text-3xl">{`${t(
+            "body.medicalRecord.title"
+          )}`}</h3>
         </div>
         <div className="mt-8">
-          <InputForm type="medicalHistory" name="Medical History" value="" />
+          <InputForm
+            type={`${t("body.medicalRecord.medHis")}`}
+            name="Medical History"
+            value=""
+          />
         </div>
         <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
           <InputForm
             type="bloodPressure"
-            name="Blood Pressure (mmHg)"
+            name={`${t("body.medicalRecord.bloodPress")}`}
             value=""
           />
-          <InputForm type="heartRate" name="Heart Rate (bpm)" value="" />
+          <InputForm
+            type="heartRate"
+            name={`${t("body.medicalRecord.heartRate")}`}
+            value=""
+          />
         </div>
         <div className="mt-8 flex flex-col gap-12 lg:flex-row ">
-          <InputForm type="weight" name="Weight (kg)" value="" />
-          <InputForm type="height" name="Height (cm)" value="" />
+          <InputForm
+            type="weight"
+            name={`${t("body.medicalRecord.weight")}`}
+            value=""
+          />
+          <InputForm
+            type="height"
+            name={`${t("body.medicalRecord.height")}`}
+            value=""
+          />
         </div>
         <div>
-          <h3 className="mt-16 text-3xl">Nhật ký sức khỏe</h3>
+          <h3 className="mt-16 text-3xl">{`${t(
+            "body.medicalDairy.title"
+          )}`}</h3>
         </div>
         <div className="mx-10 mt-8 flex justify-between">
           {details.map((detail) => (
@@ -118,7 +158,9 @@ const PatientProfile = () => {
           ))}
         </div>
         <div className="mt-12 flex flex-col items-center gap-6">
-          <h2 className="m-5 text-xl font-bold">Ghi chú hằng ngày</h2>
+          <h2 className="m-5 text-xl font-bold">{`${t(
+            "body.medicalDairy.note"
+          )}`}</h2>
           {actives.map((active) => {
             return (
               <Checkbox
@@ -155,6 +197,7 @@ const PatientProfile = () => {
         </div>
         <div></div>
       </Form>
+      <Chatbot />
     </div>
   );
 };

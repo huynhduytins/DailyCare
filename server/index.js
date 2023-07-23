@@ -13,6 +13,7 @@ import doctorRouter from "./routes/doctorRoute.js";
 import errorHandlerMiddleware from "./middleware/errorHandler.js";
 import notFoundMiddleware from "./middleware/notFound.js";
 import authenticateUser from "./middleware/auth.js";
+import axios from "axios";
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,26 @@ app.use(express.json());
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
+
+app.post("/authenticate", async (req, res) => {
+  const { username } = req.body;
+  try {
+    const r = await axios.put(
+      "https://api.chatengine.io/users/",
+      {
+        username: username,
+        secret: username,
+        first_name: username,
+      },
+      {
+        headers: { "private-key": "ccd44c80-6199-44dc-b264-0cb3b088a0ed" },
+      }
+    );
+    return res.status(r.status).json(r.data);
+  } catch (error) {
+    return res.status(error.response.status).json(e.response.data);
+  }
+});
 
 app.get("/", (req, res) => res.send({ msg: "hello from backend" }));
 

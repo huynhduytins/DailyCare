@@ -25,21 +25,21 @@ const data = [
 ];
 
 const dataMmHG = [
-  { name: "High", value: 2 },
-  { name: "Medium", value: 5 },
-  { name: "Low", value: 0 },
+  { name: "Cao", value: 2 },
+  { name: "Vừa", value: 5 },
+  { name: "Thấp", value: 0 },
 ];
 
 const dataMmol = [
-  { name: "High", value: 1 },
-  { name: "Medium", value: 4 },
-  { name: "Low", value: 2 },
+  { name: "Cao", value: 1 },
+  { name: "Vừa", value: 4 },
+  { name: "Thấp", value: 2 },
 ];
 
 const dataBpm = [
-  { name: "High", value: 3 },
-  { name: "Medium", value: 3 },
-  { name: "Low", value: 1 },
+  { name: "Cao", value: 3 },
+  { name: "Vừa", value: 3 },
+  { name: "Thấp", value: 1 },
 ];
 
 const COLORS = ["#ed0739", "#bbed07", "#07ed2d"];
@@ -75,7 +75,7 @@ const LineChartPatient = () => {
   return (
     <div className="mx-5 mt-14 flex flex-col items-center">
       <h2 className="mb-10 text-xl font-bold underline underline-offset-4">
-        Health Data
+        Thông số sức khỏe
       </h2>
       <LineChart width={800} height={300} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
@@ -113,19 +113,19 @@ const LineChartPatient = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#ed0739]"></div>
-            <span>High</span>
+            <span>Cao</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#bbed07]"></div>
-            <span>Medium</span>
+            <span>Vừa</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#07ed2d]"></div>
-            <span>Low</span>
+            <span>Thấp</span>
           </div>
         </div>
       </div>
-      <h2>Blood Pressure</h2>
+      <h2>Huyết áp</h2>
       <div className="mt-10 flex items-center gap-20">
         <ResponsiveContainer width={160} height={230}>
           <PieChart>
@@ -152,19 +152,19 @@ const LineChartPatient = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#ed0739]"></div>
-            <span>High</span>
+            <span>Cao</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#bbed07]"></div>
-            <span>Medium</span>
+            <span>Vừa</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#07ed2d]"></div>
-            <span>Low</span>
+            <span>Thấp</span>
           </div>
         </div>
       </div>
-      <h2>Blood Sugar</h2>
+      <h2>Đường trong máu</h2>
       <div className="mt-10 flex items-center gap-20">
         <ResponsiveContainer width={160} height={230}>
           <PieChart>
@@ -191,21 +191,21 @@ const LineChartPatient = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#ed0739]"></div>
-            <span>High</span>
+            <span>Cao</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#bbed07]"></div>
-            <span>Medium</span>
+            <span>Vừa</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="h-5 w-5 bg-[#07ed2d]"></div>
-            <span>Low</span>
+            <span>Thấp</span>
           </div>
         </div>
       </div>
-      <h2>Heart Rate</h2>
+      <h2>Nhịp tim</h2>
       <h2 className="mt-20 text-xl font-bold underline underline-offset-4">
-        Recent Prescription
+        Đơn thuốc
       </h2>
       <CurrentPres />
       <div className="mt-5 flex w-[500px] justify-end">

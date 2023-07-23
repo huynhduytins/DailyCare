@@ -5,6 +5,18 @@ import { useEffect, useState } from "react";
 import DetailPatient from "../DetailPatient";
 import MoreDetailModal from "../MoreDetailModal.jsx";
 
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  setDoc,
+  doc,
+  updateDoc,
+  serverTimestamp,
+  getDoc,
+} from "firebase/firestore";
+
 const online = [
   "now",
   "1m",
@@ -20,7 +32,8 @@ const online = [
 ];
 
 const PatientContainer = () => {
-  const { getAllPatients, myPatients, isLoading, page } = useAppContext();
+  const { getAllPatients, myPatients, isLoading, page, username } =
+    useAppContext();
   const [openModal, setOpenModal] = useState(false);
   const [openMoreModal, setOpenMoreModal] = useState(false);
   const [info, setInfo] = useState({});

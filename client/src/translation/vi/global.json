@@ -5,6 +5,7 @@
     "doctors": "Bác sĩ",
     "blog": "Bài viết",
     "profile": "Hồ sơ của tôi",
+    "mess": "Tin nhắn",
     "logout": "Đăng xuất"
   },
   "body": {
@@ -31,7 +32,7 @@
       "1": "Kết nối bác sĩ",
       "2": "Theo dõi sức khỏe",
       "3": "Tạo cuộc hẹn",
-      "sub1": "Bằng cách kết nối các bác sĩ, sáng kiến ​​này nhằm mục đích tăng cường hợp tác.",
+      "sub1": "Bằng cách kết nối các bác sĩ, sáng kiến này nhằm mục đích tăng cường hợp tác.",
       "sub2": "Bằng cách theo dõi sức khỏe, các cá nhân có thể hiểu rõ hơn về hoạt động cơ thể.",
       "sub3": "lên lịch hoặc đặt trước ngày giờ cụ thể để gặp nhà cung cấp dịch vụ chăm sóc"
     },
@@ -47,6 +48,27 @@
       "about": "Về chúng tôi",
       "booking": "Đặt lịch",
       "faq": "FAQ's"
+    },
+    "profile": {
+      "title": "Hồ sơ",
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "age": "Tuổi",
+      "gender": "Giới tính",
+      "address": "Địa chỉ",
+      "detail": "Thông tin sức khỏe"
+    },
+    "medicalRecord": {
+      "title": "Chỉ số sức khỏe",
+      "medHis": "Lịch sử uống thuốc",
+      "bloodPress": "Huyết áp (mmHg)",
+      "heartRate": "Nhịp tim (bpm)",
+      "weight": "Cân nặng (kg)",
+      "height": "Chiều cao (cm)"
+    },
+    "medicalDairy": {
+      "title": "Nhật ký sức khỏe",
+      "note": "Ghi chú"
     }
   }
 }

@@ -1,3 +1,5 @@
+import Chatbot from "../Chatbot";
+
 const Booking = () => {
   return (
     <div className="m-auto my-20 flex h-screen w-11/12 items-center justify-around rounded-[40px] bg-[#f5f5fc] bg-[url('../../../../src/assets/mobile-background.png')] bg-center bg-no-repeat tracking-wide">
@@ -64,6 +66,7 @@ const Booking = () => {
           className="absolute top-2/3 right-1/3 animate-updown-fast"
         />
       </div>
+      <Chatbot />
     </div>
   );
 };
