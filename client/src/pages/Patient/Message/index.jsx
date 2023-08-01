@@ -10,7 +10,7 @@ const Message = () => {
     axios
       .get("https://api.chatengine.io/users/me", {
         headers: {
-          "project-id": "40cdb4b5-8ef7-439d-9f13-a0fb2a40ab9c",
+          "project-id": "a9a17cac-08cb-487e-a010-e7ca8f07666a",
           "user-name": email,
           "user-secret": email,
         },
@@ -22,7 +22,7 @@ const Message = () => {
         formData.append("secret", email);
         axios
           .post("https://api.chatengine.io/users/", formData, {
-            headers: { "PRIVATE-KEY": "ccd44c80-6199-44dc-b264-0cb3b088a0ed" },
+            headers: { "PRIVATE-KEY": "de5684d8-a96d-4f40-b702-b147f77f8d53" },
           })
           .then((r) => console.log(r))
           .catch((err) => console.log(err));
@@ -33,7 +33,7 @@ const Message = () => {
     <div className="mt-24 mb-12">
       <ChatEngine
         height="calc(86vh)"
-        projectID="40cdb4b5-8ef7-439d-9f13-a0fb2a40ab9c"
+        projectID="a9a17cac-08cb-487e-a010-e7ca8f07666a"
         userName={email}
         userSecret={email}
       />

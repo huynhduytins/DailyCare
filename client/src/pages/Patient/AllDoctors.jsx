@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
 import DoctorCard from "./AboutUs/DoctorCard";
+import { useEffect, useState } from "react";
+import { useAppContext } from "../../context/appContext";
 
 const doctors = [
   {
@@ -19,11 +22,21 @@ const doctors = [
 ];
 
 const AllDoctors = () => {
+  const { getMyDoctors, myDoctors } = useAppContext();
+  const [myDt, setMyDt] = useState();
+
+  const [t] = useTranslation("global");
+
+  useEffect(() => {
+    getMyDoctors();
+    setMyDt(myDoctors);
+  }, []);
+
   return (
     <>
       <section className="mb-24 flex h-screen flex-col items-center">
         <h2 className="mt-44 text-4xl font-bold text-[#1f2278]">
-          The Best Doctors
+          {t("body.Doctors")}
         </h2>
         <div className="mt-24 flex gap-28">
           {doctors.map((doctor) => {
@@ -38,17 +51,15 @@ const AllDoctors = () => {
         </div>
       </section>
       <section className="flex h-screen flex-col items-center">
-        <h2 className="text-4xl font-bold text-[#1f2278]">New Doctors</h2>
+        <h2 className="text-4xl font-bold text-[#1f2278]">
+          {t("body.myDoctors")}
+        </h2>
         <div className="mt-24 flex gap-28">
-          {doctors.slice(0, 1).map((doctor) => {
-            return (
-              <DoctorCard
-                img={"../../../../src/assets/noAvatar.jpg"}
-                name={doctor.name}
-                work={doctor.work}
-              />
-            );
-          })}
+          <DoctorCard
+            img={"../../../../src/assets/noAvatar.jpg"}
+            name={myDt?.name ?? ""}
+            work={myDt?.specialist ?? ""}
+          />
         </div>
       </section>
     </>

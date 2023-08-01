@@ -7,7 +7,12 @@ const Stat = () => {
 
   useEffect(() => {
     changePage(1);
-    changeParams({ search: "", levelDis: "all", gender: "all", sort: "a-z" });
+    changeParams({
+      search: "",
+      levelDis: "Tất cả",
+      gender: "Tất cả",
+      sort: "a-z",
+    });
     setTimeout(() => {
       getStats();
     }, 1400);

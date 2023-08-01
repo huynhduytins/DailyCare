@@ -38,14 +38,14 @@ export const login = async (req, res) => {
     if (!user)
       return res
         .status(StatusCodes.BAD_REQUEST)
-        .json({ msg: "Email or Password is invalid." });
+        .json({ msg: "Email hoặc mật khẩu không đúng." });
 
     const isMatch = await user.comparePassword(password);
 
     if (!isMatch || role !== user.role)
       return res
         .status(StatusCodes.BAD_REQUEST)
-        .json({ msg: "Email or Password is invalid." });
+        .json({ msg: "Email hoặc mật khẩu không đúng." });
 
     let infoUser;
 

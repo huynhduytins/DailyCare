@@ -32,10 +32,10 @@ const ConfirmModal = ({ setOpenModal, handleCancel }) => {
           <div
             className={`w-full rounded bg-red-200 py-2 text-center font-bold text-gray-600`}
           >
-            Please Enter Message
+            Vui lòng ghi lời nhắn
           </div>
         )}
-        <h2 className="mt-3 mb-1 font-bold">Message</h2>
+        <h2 className="mt-3 mb-1 font-bold">Lời nhắn</h2>
         <textarea
           name=""
           id=""
@@ -52,7 +52,7 @@ const ConfirmModal = ({ setOpenModal, handleCancel }) => {
           className="absolute bottom-4 right-0 mr-28 rounded-md bg-red-200 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => setOpenModal(false)}
         >
-          Cancel
+          Hủy
         </button>
       </div>
     </Modal>

@@ -24,6 +24,7 @@ import {
   CHANGE_APPOINTMENT,
   CHANGE_LIKE_ARTICLE,
   DETAIL_ARTICLE,
+  GET_MY_DOCTORS,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -32,7 +33,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: "danger",
-      alertText: "Please provide all values!",
+      alertText: "Vui lòng cung cấp đầy đủ",
     };
   }
 
@@ -62,7 +63,7 @@ const reducer = (state, action) => {
       role: action.payload.user.role,
       showAlert: true,
       alertType: "success",
-      alertText: "User Created! Redirecting...",
+      alertText: "Tạo tài khoản thành công...",
     };
   }
 
@@ -81,7 +82,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: "success",
-      alertText: "Updating...",
+      alertText: "Đang cập nhật...",
     };
   }
 
@@ -89,7 +90,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       alertType: "success",
-      alertText: "User was successfully updated.",
+      alertText: "Cập nhật người dùng thành công",
       infoUser: action.payload,
     };
   }
@@ -105,7 +106,7 @@ const reducer = (state, action) => {
       infoUser: action.payload.infoUser,
       showAlert: true,
       alertType: "success",
-      alertText: "Login Successful! Redirecting...",
+      alertText: "Đăng nhập thành công...",
     };
   }
 
@@ -114,7 +115,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: "success",
-      alertText: "PROCESSING...",
+      alertText: "Đang xử lý...",
     };
   }
 
@@ -122,7 +123,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       alertType: "success",
-      alertText: "PATIENT WAS SUCCESSFULLY ADDED.",
+      alertText: "Thêm bệnh nhân thành công",
       patientAccount: action.payload,
       localCache: {},
     };
@@ -277,6 +278,14 @@ const reducer = (state, action) => {
     return {
       ...state,
       detail: detail,
+    };
+  }
+
+  if (action.type === GET_MY_DOCTORS) {
+    const myDoctors = action.payload.doctorInfo;
+    return {
+      ...state,
+      myDoctors: myDoctors,
     };
   }
 };

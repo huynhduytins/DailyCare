@@ -44,10 +44,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <FooterLinks title="Quick Links" links={QuickLinks} />
-        <FooterLinks title="Our Service" links={ServiceLinks} />
+        <FooterLinks title="Liên kết" links={QuickLinks} />
+        <FooterLinks title="Dịch vụ" links={ServiceLinks} />
         <form className="flex basis-1/6 flex-col gap-10">
-          <h2 className="text-2xl font-bold text-[#1F2278]">Subcribe</h2>
+          <h2 className="text-2xl font-bold text-[#1F2278]">Đăng ký</h2>
           <input
             type="email"
             placeholder="Email Address"
@@ -57,7 +57,7 @@ const Footer = () => {
             type="submit"
             className="w-5/6 rounded-lg bg-[#f17732] py-3 px-7 text-white hover:bg-[#fa8541]"
           >
-            Subcribe Now
+            Đăng ký
           </button>
         </form>
       </div>

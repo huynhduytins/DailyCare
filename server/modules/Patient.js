@@ -27,7 +27,7 @@ const PatientSchema = new mongoose.Schema({
   },
   levelDis: {
     type: String,
-    default: "Good",
+    default: "Xấu",
   },
   userId: {
     type: Schema.Types.ObjectId,

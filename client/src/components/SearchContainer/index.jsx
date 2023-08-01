@@ -34,12 +34,12 @@ const SearchContainer = () => {
           />
         </div>
         <Select
-          items={["all", "Good", "Bad", "Urgent"]}
+          items={["Tất cả", "Tốt", "Xấu", "Khẩn cấp"]}
           title="Tình trạng bệnh nhân"
           name="levelDis"
         />
         <Select
-          items={["all", "Male", "Female"]}
+          items={["Tất cả", "Nam", "Nữ"]}
           title="Giới tính"
           name="gender"
         />

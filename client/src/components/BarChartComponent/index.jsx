@@ -13,12 +13,12 @@ const BarChartComponent = () => {
   const { stats } = useAppContext();
 
   const data = [
-    { date: "Oct 2022", patient: stats?.data?.monthlyUrgent[0] ?? 0 },
-    { date: "Nov 2022", patient: stats?.data?.monthlyUrgent[1] ?? 0 },
-    { date: "Dec 2022", patient: stats?.data?.monthlyUrgent[2] ?? 0 },
-    { date: "Jan 2023", patient: stats?.data?.monthlyUrgent[3] ?? 0 },
-    { date: "Feb 2023", patient: stats?.data?.monthlyUrgent[4] ?? 0 },
-    { date: "Mar 2023", patient: stats?.data?.monthlyUrgent[5] ?? 0 },
+    { date: "02 / 2022", patient: stats?.data?.monthlyUrgent[0] ?? 0 },
+    { date: "03 / 2022", patient: stats?.data?.monthlyUrgent[1] ?? 0 },
+    { date: "04 / 2022", patient: stats?.data?.monthlyUrgent[2] ?? 0 },
+    { date: "05 / 2023", patient: stats?.data?.monthlyUrgent[3] ?? 0 },
+    { date: "06 / 2023", patient: stats?.data?.monthlyUrgent[4] ?? 0 },
+    { date: "07 / 2023", patient: stats?.data?.monthlyUrgent[5] ?? 0 },
   ];
 
   return (

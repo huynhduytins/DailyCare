@@ -25,6 +25,7 @@ import {
   CHANGE_APPOINTMENT,
   CHANGE_LIKE_ARTICLE,
   DETAIL_ARTICLE,
+  GET_MY_DOCTORS,
 } from "./actions";
 import axios from "axios";
 
@@ -63,27 +64,29 @@ const initialSate = {
 
   // QUERY
   search: "",
-  levelDis: "all",
-  gender: "all",
+  levelDis: "Tất cả",
+  gender: "Tất cả",
   sort: "a-z",
 
   // CACHING
   localCache: {},
 
+  myDoctors: {},
+
   // Appointment
   appointment: [
     {
-      name: "Adam",
+      name: "An",
       date: {
-        when: "Tomorrow",
+        when: "Ngày mai",
         day: "Thu, 02/07/2023",
         hour: "11:30 AM",
       },
     },
     {
-      name: "Ema",
+      name: "Loan",
       date: {
-        when: "Tomorrow",
+        when: "Ngày mai",
         day: "Thu, 02/07/2023",
         hour: "15:30 AM",
       },
@@ -353,6 +356,15 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const getMyDoctors = async () => {
+    try {
+      const { data } = await authFetch.get("patient/myDoctors");
+      dispatch({ type: GET_MY_DOCTORS, payload: data });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   const getStats = async () => {
     try {
       const { data } = await authFetch.get("doctors/get-stats");
@@ -399,6 +411,7 @@ const AppProvider = ({ children }) => {
         changeAppointment,
         changeLikeArticle,
         detailArticle,
+        getMyDoctors,
       }}
     >
       {children}

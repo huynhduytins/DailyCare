@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",

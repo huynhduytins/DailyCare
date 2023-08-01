@@ -8,6 +8,7 @@ dotenv.config();
 
 import authRouter from "./routes/authRoute.js";
 import doctorRouter from "./routes/doctorRoute.js";
+import patientRouter from "./routes/patientRoute.js";
 
 // middleware
 import errorHandlerMiddleware from "./middleware/errorHandler.js";
@@ -47,6 +48,7 @@ app.get("/", (req, res) => res.send({ msg: "hello from backend" }));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/doctors", authenticateUser, doctorRouter);
+app.use("/api/v1/patient", authenticateUser, patientRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

@@ -45,9 +45,9 @@ const PatientCard = ({
         </div>
         <div
           className={`flex items-center gap-2 rounded ${
-            level === "Urgent"
+            level === "Khẩn cấp"
               ? "bg-red-300"
-              : level === "Bad"
+              : level === "Xấu"
               ? "bg-yellow-300"
               : "bg-green-300"
           } p-2`}
@@ -58,12 +58,12 @@ const PatientCard = ({
       </header>
       <div className="flex items-center gap-36 py-4 px-7">
         <div className="flex items-center gap-2">
-          {gender === "Male" ? <GrUserManager /> : <GrUserFemale />}
+          {gender === "Nữ" ? <GrUserFemale /> : <GrUserManager />}
           <span>{gender}</span>
         </div>
         <div className="flex items-center gap-2">
           <HiOutlineUserCircle />
-          <span>{age} years-old</span>
+          <span>{age} Tuổi</span>
         </div>
       </div>
       <div className="h-20 max-h-20 py-4 px-7">
@@ -74,13 +74,13 @@ const PatientCard = ({
           className="mr-7 rounded-md bg-green-100 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => setOpenMoreModal(true)}
         >
-          Prescription
+          Đơn thuốc
         </button>
         <button
           className="mr-7 rounded-md bg-red-100 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => deleteMyPatient(id)}
         >
-          Delete
+          Hủy theo dõi
         </button>
       </div>
     </article>

@@ -15,13 +15,13 @@ import {
 import CurrentPres from "./CurrentPres";
 
 const data = [
-  { name: "6 days ago", mmHg: 120, mmol: 150, bpm: 60 },
-  { name: "5 days ago", mmHg: 122, mmol: 155, bpm: 100 },
-  { name: "4 days ago", mmHg: 130, mmol: 180, bpm: 80 },
-  { name: "3 days ago", mmHg: 100, mmol: 160, bpm: 90 },
-  { name: "2 days ago", mmHg: 120, mmol: 179, bpm: 90 },
-  { name: "yesterday", mmHg: 120, mmol: 190, bpm: 80 },
-  { name: "today", mmHg: 120, mmol: 180, bpm: 76 },
+  { name: "6 ngày trước", mmHg: 120, mmol: 150, bpm: 60 },
+  { name: "5 ngày trước", mmHg: 122, mmol: 155, bpm: 100 },
+  { name: "4 ngày trước", mmHg: 130, mmol: 180, bpm: 80 },
+  { name: "3 ngày trước", mmHg: 100, mmol: 160, bpm: 90 },
+  { name: "2 ngày trước", mmHg: 120, mmol: 179, bpm: 90 },
+  { name: "hôm qua", mmHg: 120, mmol: 190, bpm: 80 },
+  { name: "hôm nay", mmHg: 120, mmol: 180, bpm: 76 },
 ];
 
 const dataMmHG = [
@@ -210,15 +210,15 @@ const LineChartPatient = () => {
       <CurrentPres />
       <div className="mt-5 flex w-[500px] justify-end">
         <em>
-          Prescription Creation Date:<span className="invisible">ssss</span>
+          Ngày tạo đơn thuốc:<span className="invisible">ssss</span>
         </em>
         <p>29/06/2023</p>
       </div>
       <div className="mt-2 flex w-[500px] justify-end">
         <em>
-          Diagnosis:<span className="invisible">ssss</span>
+          Chuẩn đoán:<span className="invisible">ssss</span>
         </em>
-        <p>stomach ulcer</p>
+        <p>Đau dạ dày</p>
       </div>
     </div>
   );

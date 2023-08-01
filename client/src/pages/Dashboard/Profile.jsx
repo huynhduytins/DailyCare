@@ -45,12 +45,17 @@ const Profile = () => {
 
   useEffect(() => {
     changePage(1);
-    changeParams({ search: "", levelDis: "all", gender: "all", sort: "a-z" });
+    changeParams({
+      search: "",
+      levelDis: "Tất cả",
+      gender: "Tất cả",
+      sort: "a-z",
+    });
   }, []);
 
   return (
     <Form
-      title="Profile"
+      title="Hồ sơ"
       handleSubmit={handleSubmit}
       button="Lưu"
       showAlert={showAlert}

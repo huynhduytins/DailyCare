@@ -73,6 +73,9 @@
     "medicalDairy": {
       "title": "Health Dairy",
       "note": "Note"
-    }
+    },
+    "Doctors": "The Best Doctors",
+    "myDoctors": "My Doctors",
+    "detail": "More Detail"
   }
 }

@@ -1,4 +1,6 @@
 import Doctor from "../modules/Doctor.js";
+import Patient from "../modules/Patient.js";
+import User from "../modules/User.js";
 
 export const getDoctor = async (req, res) => {
   // try {
@@ -22,12 +24,28 @@ export const getAllDoctors = async (req, res) => {
 };
 
 export const getMyDoctors = async (req, res) => {
-  // try {
-  //   const { id } = req.params;
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
-  res.send("get my doctors");
+  try {
+    const { userId } = req.user;
+
+    const myDoctors = await Patient.find({ userId: userId });
+    const user = await User.findOne({ email: myDoctors[0].myDoctors[0] });
+    const doctor = await Doctor.findOne({ userId: user._id });
+    const { specialist, address, age, phone } = doctor;
+
+    const doctorInfo = {
+      name: user.name,
+      firstName: doctor.firstName,
+      lastName: doctor.lastName,
+      specialist,
+      address,
+      age,
+      phone,
+    };
+
+    res.json({ doctorInfo });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
 
 export const connectDoctor = async (req, res) => {

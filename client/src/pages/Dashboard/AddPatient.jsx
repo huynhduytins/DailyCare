@@ -39,14 +39,19 @@ const AddPatient = () => {
   };
 
   useEffect(() => {
-    if (alertText === "PATIENT WAS SUCCESSFULLY ADDED.") {
+    if (alertText === "Thêm bệnh nhân thành công") {
       setTimeout(() => setOpenModal(true), 1000);
     }
   }, [alertText]);
 
   useEffect(() => {
     changePage(1);
-    changeParams({ search: "", levelDis: "all", gender: "all", sort: "a-z" });
+    changeParams({
+      search: "",
+      levelDis: "Tất cả",
+      gender: "Tất cả",
+      sort: "a-z",
+    });
     getWaitingList();
   }, []);
 

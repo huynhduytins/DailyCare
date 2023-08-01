@@ -17,12 +17,12 @@ export const getAllPatients = async (req, res) => {
     myDoctors: user.email,
   };
 
-  if (levelDis && levelDis !== "all") {
+  if (levelDis && levelDis !== "Tất cả") {
     console.log(levelDis);
     queryObject.levelDis = levelDis;
   }
 
-  if (gender && gender !== "all") {
+  if (gender && gender !== "Tất cả") {
     queryObject.gender = gender;
   }
 
@@ -151,7 +151,6 @@ export const getStats = async (req, res) => {
 
     const waitingPatients = await Patient.find({ waiting: user.email });
     const urgentPatients = await Patient.find({ myDoctors: user.email });
-
     const data = {
       urgentPatient: 0,
       schedule: urgentPatients.length ? 5 : 0,
@@ -164,7 +163,7 @@ export const getStats = async (req, res) => {
     };
 
     urgentPatients.forEach((patient) => {
-      if (patient.levelDis === "Urgent") {
+      if (patient.levelDis === "Khẩn cấp") {
         data.urgentPatient += 1;
       }
       if (patient.age > 0 && patient.age <= 22) {

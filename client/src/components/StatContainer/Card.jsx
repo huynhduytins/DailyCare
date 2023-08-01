@@ -24,10 +24,10 @@ const Card = ({ name, date, handleCancel }) => {
           </div>
         </div>
         <button
-          className="absolute bottom-4 right-3 mr-28 rounded-md bg-green-200 py-[6px] px-3 shadow-md hover:shadow-lg"
+          className="absolute bottom-4 right-16 mr-28 rounded-md bg-green-200 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => setOpenResModal(true)}
         >
-          Reschedule
+          Đặt lại lịch
         </button>
         <button
           className="absolute bottom-4 right-3 mr-7 rounded-md bg-red-100 py-[6px] px-3 shadow-md hover:shadow-lg"
@@ -35,7 +35,7 @@ const Card = ({ name, date, handleCancel }) => {
             setOpenConfirmModal(true);
           }}
         >
-          Cancel
+          Hủy cuộc hẹn
         </button>
       </div>
       {openConfirmModal && (
