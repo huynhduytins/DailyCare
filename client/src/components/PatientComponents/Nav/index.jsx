@@ -36,9 +36,9 @@ const NavbarPatient = (props) => {
           />
           <div className="hidden basis-1/6 justify-center  md:flex">
             <img
-              src="../../../src/assets/logo.svg"
+              src="../../../src/assets/logo2.png"
               alt="logo"
-              className="w-56"
+              className="w-44"
             />
           </div>
           <ul className="hidden basis-3/6 justify-between md:flex">
