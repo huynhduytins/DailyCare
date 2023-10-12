@@ -64,8 +64,8 @@ const initialSate = {
 
   // QUERY
   search: "",
-  levelDis: "Tất cả",
-  gender: "Tất cả",
+  levelDis: "All",
+  gender: "All",
   sort: "a-z",
 
   // CACHING
@@ -76,17 +76,17 @@ const initialSate = {
   // Appointment
   appointment: [
     {
-      name: "An",
+      name: "Ana",
       date: {
-        when: "Ngày mai",
+        when: "Tomorrow",
         day: "Thu, 02/07/2023",
         hour: "11:30 AM",
       },
     },
     {
-      name: "Loan",
+      name: "Adam",
       date: {
-        when: "Ngày mai",
+        when: "Tomorrow",
         day: "Thu, 02/07/2023",
         hour: "15:30 AM",
       },

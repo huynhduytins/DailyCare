@@ -18,7 +18,7 @@ const Login = () => {
   };
 
   const handleSignUpForm = () => {
-    setPos({ btn: 130, login: -400, signUp: 50 });
+    setPos({ btn: 115, login: -400, signUp: 50 });
     setTypeForm("SignUp");
   };
 
@@ -33,7 +33,7 @@ const Login = () => {
   }, [email, navigate]);
 
   return (
-    <div className=" flex flex-col sm:flex-row lg:flex-row">
+    <div className=" flex flex-col sm:flex-row">
       <LeftSide
         pos={pos}
         typeForm={typeForm}

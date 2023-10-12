@@ -74,13 +74,13 @@ const PatientCard = ({
           className="mr-7 rounded-md bg-green-100 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => setOpenMoreModal(true)}
         >
-          Đơn thuốc
+          Prescription
         </button>
         <button
           className="mr-7 rounded-md bg-red-100 py-[6px] px-3 shadow-md hover:shadow-lg"
           onClick={() => deleteMyPatient(id)}
         >
-          Hủy theo dõi
+          Cancel
         </button>
       </div>
     </article>

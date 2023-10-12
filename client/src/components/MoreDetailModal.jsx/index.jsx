@@ -17,15 +17,15 @@ const MoreDetailModal = ({ setOpenModal, patient }) => {
           <FaTimes />
         </button>
         <h1 className="hidden text-center text-2xl font-bold tracking-wide md:block">
-          Đơn thuốc
+          Prescription
         </h1>
         <div className="mx-72 mt-14 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Bác sĩ</h2>
+          <h2 className="text-lg font-semibold">Doctor</h2>
           <p>{username}</p>
         </div>
         {patient && (
           <div className="mx-72 mt-5 flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Bệnh nhân</h2>
+            <h2 className="text-lg font-semibold">Patient</h2>
             <p>{patient}</p>
           </div>
         )}

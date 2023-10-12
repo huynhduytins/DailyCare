@@ -17,12 +17,12 @@ export const getAllPatients = async (req, res) => {
     myDoctors: user.email,
   };
 
-  if (levelDis && levelDis !== "Tất cả") {
+  if (levelDis && levelDis !== "All") {
     console.log(levelDis);
     queryObject.levelDis = levelDis;
   }
 
-  if (gender && gender !== "Tất cả") {
+  if (gender && gender !== "All") {
     queryObject.gender = gender;
   }
 

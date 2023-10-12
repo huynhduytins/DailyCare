@@ -9,8 +9,8 @@ const Stat = () => {
     changePage(1);
     changeParams({
       search: "",
-      levelDis: "Tất cả",
-      gender: "Tất cả",
+      levelDis: "All",
+      gender: "All",
       sort: "a-z",
     });
     setTimeout(() => {

@@ -46,7 +46,7 @@ const SignInForm = ({ pos }) => {
           type="password"
           name="password"
           id="password"
-          placeholder="Mật khẩu"
+          placeholder="Password"
           className="input-field"
         />
         <VscLockSmall className="icon-login" />
@@ -54,19 +54,19 @@ const SignInForm = ({ pos }) => {
       <label htmlFor="role" className="relative">
         <select name="role" id="role" className="input-field">
           <option value="" disabled selected hidden>
-            Vai trò
+            Role
           </option>
-          <option value="Doctor">Bác sĩ</option>
-          <option value="Patient">Bệnh nhân</option>
+          <option value="Doctor">Doctor</option>
+          <option value="Patient">Patient</option>
         </select>
         <BiUserPin className="icon-login" />
       </label>
       <label htmlFor="remember">
         <input type="checkbox" name="remember" id="remember" />{" "}
-        <span>Nhớ mật khẩu</span>
+        <span>Remember password</span>
       </label>
       <button className="submit-btn" disabled={isLoading}>
-        Đăng nhập
+        Log in
       </button>
     </form>
   );

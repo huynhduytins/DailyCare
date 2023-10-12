@@ -7,7 +7,7 @@ const Articles = () => {
   return (
     <div className="mb-10 flex w-full flex-col items-center justify-center">
       <h2 className="mt-10 w-10/12 text-xl font-bold">
-        Bài báo yêu thích: {articles.myFavorite.length}
+        Favorite articles: {articles.myFavorite.length}
       </h2>
       <div className="ml-32 mt-10 flex flex-wrap gap-20 ">
         {articles.myFavorite.map((art) => (
@@ -23,9 +23,9 @@ const Articles = () => {
         ))}
       </div>
       <h2 className="my-10 w-10/12 text-xl font-bold">
-        Tất cả bài báo: {articles.allArticles.length}
+        All articles: {articles.allArticles.length}
       </h2>
-      <div className="ml-32 flex flex-wrap gap-20 ">
+      <div className="flex flex-wrap justify-center gap-20 ">
         {articles.allArticles.map((art) => (
           <Card
             img={art.img}

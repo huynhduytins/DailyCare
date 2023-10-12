@@ -73,18 +73,18 @@ const DetailPatient = ({ setOpenModal, info }) => {
               aria-label="basic tabs example"
             >
               <Tab
-                label={<span className="font-bold">Thông tin</span>}
+                label={<span className="font-bold">Detail</span>}
                 {...a11yProps(0)}
               />
               <Tab
-                label={<span className="font-bold">Tin nhắn</span>}
+                label={<span className="font-bold">Message</span>}
                 {...a11yProps(1)}
               />
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
             <h1 className="hidden text-center text-2xl font-bold tracking-wide md:block">
-              Thông tin bệnh nhân
+              Detail
             </h1>
             <div className="mt-12 flex flex-col items-center">
               <div className="avatar">

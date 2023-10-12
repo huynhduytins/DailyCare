@@ -54,7 +54,7 @@ const SignUpForm = ({ pos }) => {
           type="text"
           name="usernameU"
           id="usernameU"
-          placeholder="Tên"
+          placeholder="Name"
           className="input-field"
         />
         <BiUser className="icon-login" />
@@ -64,7 +64,7 @@ const SignUpForm = ({ pos }) => {
           type="password"
           name="passwordU"
           id="passwordU"
-          placeholder="Mật khẩu"
+          placeholder="Password"
           className="input-field"
         />
         <VscLockSmall className="icon-login" />
@@ -72,10 +72,10 @@ const SignUpForm = ({ pos }) => {
       <label htmlFor="roleU" className="relative">
         <select name="roleU" id="roleU" className="input-field">
           <option value="" disabled selected hidden>
-            Vai trò
+            Role
           </option>
-          <option value="Doctor">Bác sĩ</option>
-          <option value="Patient">Bệnh nhân</option>
+          <option value="Doctor">Doctor</option>
+          <option value="Patient">Patient</option>
         </select>
         <BiUserPin className="icon-login" />
       </label>
@@ -86,10 +86,10 @@ const SignUpForm = ({ pos }) => {
           id="rememberU"
           className="bg-green-600 font-[12px]"
         />{" "}
-        <span>Tôi đồng ý với điều khoản</span>
+        <span>I agree to the terms</span>
       </label>
       <button className="submit-btn" disabled={isLoading}>
-        Tạo tài khoản
+        Create new account
       </button>
     </form>
   );

@@ -50,7 +50,7 @@ const StatContainer = () => {
         <ChartContainer />
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold tracking-wider text-gray-500">
-            Lịch khám bệnh của tôi
+            Medical schedule
           </h2>
           <div className="mt-12 flex flex-wrap justify-center gap-10">
             {appointment.map((app) => {

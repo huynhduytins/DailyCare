@@ -36,7 +36,7 @@ const Card = ({ img, subImg, name, calendar, title, like, server = false }) => {
           onClick={handleDetail}
           className="m-5 rounded-md border-2 border-[#565ACF] py-2 px-5 text-sm text-[#565ACF] duration-500 hover:bg-[#565ACF] hover:text-white"
         >
-          <Link to="/admin/articles/detail">Chi tiết</Link>
+          <Link to="/admin/articles/detail">Detail</Link>
         </button>
         {server && (
           <button onClick={handleLike}>

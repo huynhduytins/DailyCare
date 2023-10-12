@@ -6,29 +6,23 @@ import { BsFillChatSquareTextFill } from "react-icons/bs";
 import { ImNewspaper } from "react-icons/im";
 
 const Links = [
-  { id: 1, text: "Thống kê", path: "/admin", icon: <IoBarChartSharp /> },
+  { id: 1, text: "Stats", path: "/admin", icon: <IoBarChartSharp /> },
   {
     id: 2,
-    text: "Tất cả bệnh nhân",
+    text: "All Patients",
     path: "all-patients",
     icon: <MdQueryStats />,
   },
   {
     id: 3,
-    text: "Thêm bệnh nhân",
+    text: "Add Patient",
     path: "add-patient",
     icon: <FaWpforms />,
   },
-  { id: 4, text: "Hồ sơ", path: "profile", icon: <ImProfile /> },
-  {
-    id: 5,
-    text: "Tin nhắn",
-    path: "message",
-    icon: <BsFillChatSquareTextFill />,
-  },
+  { id: 4, text: "Portfolio", path: "profile", icon: <ImProfile /> },
   {
     id: 6,
-    text: "Bài báo y tế",
+    text: "Articles",
     path: "articles",
     icon: <ImNewspaper />,
   },

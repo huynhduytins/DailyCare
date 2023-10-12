@@ -33,7 +33,7 @@ const Navbar = () => {
             className=" absolute top-10 left-0 w-full cursor-pointer rounded-md bg-green-500 p-2 text-center text-white hover:bg-green-400"
             onClick={logoutUser}
           >
-            <button className="z-50 bg-transparent">Đăng xuất</button>
+            <button className="z-50 bg-transparent">Logout</button>
           </div>
         )}
       </div>

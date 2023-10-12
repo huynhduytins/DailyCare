@@ -47,31 +47,31 @@ const Profile = () => {
     changePage(1);
     changeParams({
       search: "",
-      levelDis: "Tất cả",
-      gender: "Tất cả",
+      levelDis: "All",
+      gender: "All",
       sort: "a-z",
     });
   }, []);
 
   return (
     <Form
-      title="Hồ sơ"
+      title="Portfolio"
       handleSubmit={handleSubmit}
-      button="Lưu"
+      button="Save"
       showAlert={showAlert}
       submit={submit}
     >
       <div className="mt-12 flex flex-col gap-12 lg:flex-row ">
         <InputForm
           type="firstName"
-          name="Họ"
+          name="First Name"
           value={infoUser?.firstName ?? ""}
           submit={submit}
           setSubmit={setSubmit}
         />
         <InputForm
-          type="lastName"
-          name="Tên"
+          type="Last Name"
+          name="Last Name"
           value={infoUser?.lastName ?? ""}
           submit={submit}
           setSubmit={setSubmit}
@@ -81,14 +81,14 @@ const Profile = () => {
       <div className="mt-16 flex flex-col gap-12 lg:flex-row ">
         <InputForm
           type="specialist"
-          name="Chuyên Khoa"
+          name="Specialist"
           value={infoUser?.specialist ?? ""}
           submit={submit}
           setSubmit={setSubmit}
         />
         <InputForm
           type="degree"
-          name="Trình độ học vấn"
+          name="Degree"
           value={infoUser?.degree ?? ""}
           submit={submit}
           setSubmit={setSubmit}
@@ -98,7 +98,7 @@ const Profile = () => {
       <div className="mt-16 flex flex-col gap-12 md:flex-row">
         <InputForm
           type="address"
-          name="Địa chỉ"
+          name="Address"
           value={infoUser?.address ?? ""}
           submit={submit}
           setSubmit={setSubmit}
@@ -106,14 +106,14 @@ const Profile = () => {
         <div className="flex w-full gap-10">
           <InputForm
             type="phone"
-            name="Số điện thoại"
+            name="Phone Number"
             value={infoUser?.phone ?? ""}
             submit={submit}
             setSubmit={setSubmit}
           />
           <InputForm
             type="age"
-            name="Tuổi"
+            name="Age"
             value={infoUser?.age ?? ""}
             submit={submit}
             setSubmit={setSubmit}

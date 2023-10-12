@@ -33,7 +33,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: "danger",
-      alertText: "Vui lòng cung cấp đầy đủ",
+      alertText: "Please provide all values",
     };
   }
 
@@ -63,7 +63,7 @@ const reducer = (state, action) => {
       role: action.payload.user.role,
       showAlert: true,
       alertType: "success",
-      alertText: "Tạo tài khoản thành công...",
+      alertText: "Create account success...",
     };
   }
 
@@ -82,7 +82,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: "success",
-      alertText: "Đang cập nhật...",
+      alertText: "Updating...",
     };
   }
 
@@ -90,7 +90,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       alertType: "success",
-      alertText: "Cập nhật người dùng thành công",
+      alertText: "Update user success",
       infoUser: action.payload,
     };
   }
@@ -106,7 +106,7 @@ const reducer = (state, action) => {
       infoUser: action.payload.infoUser,
       showAlert: true,
       alertType: "success",
-      alertText: "Đăng nhập thành công...",
+      alertText: "Log in...",
     };
   }
 
@@ -115,7 +115,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: "success",
-      alertText: "Đang xử lý...",
+      alertText: "Loading...",
     };
   }
 
@@ -123,7 +123,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       alertType: "success",
-      alertText: "Thêm bệnh nhân thành công",
+      alertText: "ADD PATIENT SUCCESS",
       patientAccount: action.payload,
       localCache: {},
     };
